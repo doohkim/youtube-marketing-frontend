@@ -6,6 +6,7 @@ const SearchResultSortBlock = styled.div`
   background: white;
   align-items: center;
   justify-content: flex-end;
+  border-bottom: 1px solid black;
   p {
     cursor: pointer;
     width: auto;

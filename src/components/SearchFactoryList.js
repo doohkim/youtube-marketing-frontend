@@ -119,7 +119,7 @@ const SearchFactoryList = ({ factories, factoryName }) => {
     [searchFactory],
   );
   useEffect(() => {
-    console.log(searchFactory['0'].categoryFactories);
+    // console.log(searchFactory['0'].categoryFactories);
     // api 요청을 해야함
     // api 요청 받아온 데이터를 다시 setResult 값으로 설정
   }, [searchFactory]);

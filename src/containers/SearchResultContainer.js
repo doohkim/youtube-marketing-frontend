@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SearchResultContentList from '../components/SearchResultContentList';
+import SearchResultContentList from '../components/search/SearchResultContentList';
 import SearchResultHeader from '../components/SearchResultHeader';
 
 const SearchResultBlock = styled.div`
