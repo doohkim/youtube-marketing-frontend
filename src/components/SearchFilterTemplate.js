@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SearchFilterTemplateBlock = styled.div`
-  width: 1000px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -19,7 +19,7 @@ const SearchFilterTemplateBlock = styled.div`
     justify-content: start;
   }
   .content {
-    width: 800px;
+    width: 896px;
     color: #22b8cf;
     border: 1px solid #22b8cf;
   }

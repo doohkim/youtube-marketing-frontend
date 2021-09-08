@@ -7,7 +7,7 @@ import filterFactories from '../utils/filterFactories';
 const SearchInputBlock = styled.div`
   /* display: flex; */
   width: 100%;
-  height: 548px;
+  height: auto;
   align-items: center;
   justify-content: center;
 `;
@@ -129,7 +129,7 @@ const SearchFilterContainer = () => {
         <SearchFilterTemplate name={category.name} key={index}>
           <SearchFactoryList
             factories={category.factories}
-            name={category.name}
+            factoryName={category.name}
             // searchFactory={searchFactory}
             // onClick={onClick}
           />
