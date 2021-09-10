@@ -15,15 +15,19 @@ const SearchResultContainer = () => {
     const [channelContentList, setChannelContentList] = useState(
         data.channelsForList,
     );
-    console.log('rendering', channelContentList);
-    const sortedDescending = useCallback(() => {
-        setChannelContentList(
-            channelContentList.sort((a, b) => {
-                return b.viewCount - a.viewCount;
-            }),
-        );
-        console.log('rendering', channelContentList);
-    }, [channelContentList]);
+    const sortedDescending = useCallback(
+        (e) => {
+            const name = e.target.name;
+            console.log(name);
+            setChannelContentList(
+                channelContentList.sort((a, b) => {
+                    return b[name] - a[name];
+                }),
+            );
+            console.log('rendering', channelContentList);
+        },
+        [channelContentList],
+    );
 
     return (
         <SearchResultBlock>
