@@ -7,7 +7,7 @@ const SearchResultSortBlock = styled.div`
     align-items: center;
     justify-content: flex-end;
     border-bottom: 1px solid black;
-    p {
+    button {
         cursor: pointer;
         width: auto;
         font-size: 0.9rem;
@@ -19,11 +19,21 @@ const SearchResultHeader = ({ sortedDescending }) => {
     const subscriberCount = 'subscriberCount';
     return (
         <SearchResultSortBlock>
-            <div onClick={() => sortedDescending()}>구독자 순</div>
-            <p>일일조회수 순</p>
-            <p>구독자 급상승 순</p>
-            <p>영상 평균 조회수 순</p>
-            <p>30일 조회수 순</p>
+            <button name="subscriberCount" onClick={sortedDescending}>
+                구독자 순
+            </button>
+            <button name="dailyViewChange" onClick={sortedDescending}>
+                일일조회수 순
+            </button>
+            <button name="subscriberChange" onClick={sortedDescending}>
+                구독자 급상승 순
+            </button>
+            <button name="averageVideoViewCount" onClick={sortedDescending}>
+                영상 평균 조회수 순
+            </button>
+            <button name="viewCount" onClick={sortedDescending}>
+                30일 조회수 순
+            </button>
         </SearchResultSortBlock>
     );
 };
