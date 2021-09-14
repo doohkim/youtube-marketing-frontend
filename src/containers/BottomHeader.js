@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 import Categories from '../components/Categories';
 
 const BottomHeaderBlockContainer = styled.div`
     width: 1080px;
-    height: 31px;
+    /* height: 1000px; */
     display: flex;
     padding: 1rem;
     /* margin: 0 auto; */
@@ -12,14 +12,14 @@ const BottomHeaderBlockContainer = styled.div`
         width: 100%;
         overflow-x: auto;
     }
-` 
+`;
 
 const BottomHeader = () => {
     return (
         <BottomHeaderBlockContainer>
             <Categories />
         </BottomHeaderBlockContainer>
-    )
-}
+    );
+};
 
 export default BottomHeader;
