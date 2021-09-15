@@ -1,5 +1,5 @@
-const data= {
-        searchVideoList: [
+const searchVideoList = 
+[
             {
                 videoId: 'awkkyBH2zEo',
                 isOnlyChannelStat: false,
@@ -1191,4 +1191,4 @@ const data= {
                 },
             },
         ],
-    },
+    
