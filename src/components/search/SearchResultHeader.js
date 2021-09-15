@@ -16,7 +16,6 @@ const SearchResultSortBlock = styled.div`
 `;
 
 const SearchResultHeader = ({ sortedDescending }) => {
-    const subscriberCount = 'subscriberCount';
     return (
         <SearchResultSortBlock>
             <button name="subscriberCount" onClick={sortedDescending}>
