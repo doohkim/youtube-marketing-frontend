@@ -12,28 +12,28 @@ const SearchResultContentListBlock = styled.div`
 
 const SearchResultContentList = ({
     channelContentList,
-    setChannelContentList,
+    // setChannelContentList,
 }) => {
     // const [channelContentList, setChannelContentList] = useState(
     //     data.channelsForList,
     // );
 
-    const onToggle = useCallback(
-        (title) => {
-            setChannelContentList(
-                channelContentList.map((channelContent) =>
-                    channelContent.title === title
-                        ? {
-                              ...channelContent,
-                              isCertificated: !channelContent.isCertificated,
-                          }
-                        : channelContent,
-                ),
-            );
-            console.log('여기서api 날리면 되는건가?');
-        },
-        [channelContentList],
-    );
+    // const onToggle = useCallback(
+    //     (title) => {
+    //         setChannelContentList(
+    //             channelContentList.map((channelContent) =>
+    //                 channelContent.title === title
+    //                     ? {
+    //                           ...channelContent,
+    //                           isCertificated: !channelContent.isCertificated,
+    //                       }
+    //                     : channelContent,
+    //             ),
+    //         );
+    //         console.log('여기서api 날리면 되는건가?');
+    //     },
+    //     [channelContentList],
+    // );
 
     return (
         <SearchResultContentListBlock>
@@ -42,7 +42,7 @@ const SearchResultContentList = ({
                     info={channelList}
                     index={index}
                     key={index}
-                    onToggle={onToggle}
+                    // onToggle={onToggle}
                 />
             ))}
         </SearchResultContentListBlock>
