@@ -19,39 +19,6 @@ export const listChannelFailure = createAction(
 );
 const initialState = {
     channel: [],
-    // channel: {
-    //     channelId: '',
-    //     title: '',
-    //     description: '',
-    //     thumbnails: '',
-    //     category: '',
-    //     isFavorite: false,
-    //     viewCount: 0,
-    //     averageVideoViewCount: 0,
-    //     subscriberCount: 0,
-    //     dailyViewChange: 0,
-    //     dailyViewCount: 0,
-    //     video: [
-    //         {
-    //             publishedAt: '',
-    //             videoId: '',
-    //             title: '',
-    //             thumbnails: '',
-    //         },
-    //     ],
-    // },
-    // video: {
-    //     videoId: '',
-    //     title: '',
-    //     description: '',
-    //     likeCount: 0,
-    //     dislikeCount: 0,
-    //     viewCount: 0,
-    //     dailyViewCount: 0,
-    //     publishedAt: '',
-    //     tags: [],
-    //     thumbnails: '',
-    // },
     isLoading: false,
     channelError: null,
 };
