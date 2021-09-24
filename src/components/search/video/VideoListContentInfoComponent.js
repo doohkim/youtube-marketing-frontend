@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoListContentComponent from './VideoListContentComponent';
 
 const VideoListContentInfoComponentWrap = styled.div`
     width: 244px;

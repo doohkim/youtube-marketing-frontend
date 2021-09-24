@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../containers/Header';
-import SearchRankContainer from '../containers/SearchRankContainer';
 
 const SearchPage = () => {
     return (

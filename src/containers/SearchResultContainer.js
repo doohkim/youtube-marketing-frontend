@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import SearchResultContentList from '../components/search/SearchResultContentList';
@@ -21,7 +21,7 @@ const SearchResultContainer = () => {
 
     // 여기서 데이터 관리 할까? api 날려도 되지 않을가?
     const dispatch = useDispatch();
-    const { isLoading, channel, channelError } = useSelector(({ channel }) => ({
+    const { channel } = useSelector(({ channel }) => ({
         channel: channel.channel,
         isLoading: channel.isLoading,
         channelError: channel.channelError,

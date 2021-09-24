@@ -11,6 +11,7 @@ import {
     AiFillStar,
 } from 'react-icons/ai';
 import { BiPlay } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 const SearchResultContentComponentBlock = styled.div`
     background: white;
     display: flex;
@@ -233,7 +234,9 @@ const SearchResultContentComponent = ({ info, index, onToggle }) => {
                 </div>
                 <div className="search-channel-present-video-thumbnail-wrap">
                     <div>
-                        <img src={lastVideo.thumbnails} alt="thumbnail" />
+                        <Link to="/detail/:id">
+                            <img src={lastVideo.thumbnails} alt="thumbnail" />
+                        </Link>
                     </div>
                 </div>
             </div>

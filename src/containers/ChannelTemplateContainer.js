@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
 import ChannelList from '../components/ChannelList';
 import ChannelTemplate from '../components/ChannelTemplate';
-import { listChannelSuccess } from '../modules/channel';
-import axios from 'axios';
 const ChannelListBlock = styled.div`
     /* box-sizing: border-box; */
     width: 1080px;
@@ -26,7 +23,7 @@ const ChannelListBlock = styled.div`
 
 const ChannelTemplatContainer = () => {
     // console.log(is)
-    const [channelInfo, setChannelInfo] = useState([
+    const channelInfo = [
         {
             id: 1,
             kind: '25-44 | 뷰티 선호 채널💖',
@@ -155,7 +152,7 @@ const ChannelTemplatContainer = () => {
                 },
             ],
         },
-    ]);
+    ];
 
     // page 620 참조
     // axios 이용해서 데이터 setArticle 설정하면서
