@@ -42,8 +42,8 @@ const Category = styled(NavLink)`
         margin-left: 1rem;
     }
 `;
-const DetailChannelContainer = ({ channelId }) => {
-    console.log(channelId);
+const DetailChannelContainer = () => {
+    const channelId = 'UCOmHUn--16B90oW2L6FRR3A';
     return (
         <DetailChannelContainerBlock>
             <DetailChannelThumbnailComponent />

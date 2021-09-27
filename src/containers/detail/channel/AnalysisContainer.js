@@ -21,10 +21,10 @@ const AnalysisContainer = ({ location }) => {
         ignoreQueryPrefix: true,
     });
     const type = query.category;
+
     console.log(type);
     return (
         <AnalysisContainerBlock>
-            {null}
             {type === 'viewer' ? (
                 <ViewersAnalysisContainer />
             ) : type === 'video' ? (
