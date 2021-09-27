@@ -15,12 +15,12 @@ const AnalysisContainerBlock = styled.div`
     }
 `;
 
-const AnalysisContainer = ({ location }) => {
-    // const { type } = match.params;
-    const query = qs.parse(location.search, {
-        ignoreQueryPrefix: true,
-    });
-    const type = query.category;
+const AnalysisContainer = ({ match }) => {
+    const { type } = match.params;
+    // const query = qs.parse(location.search, {
+    //     ignoreQueryPrefix: true,
+    // });
+    // const type = query.category;
 
     console.log(type);
     return (
@@ -29,7 +29,7 @@ const AnalysisContainer = ({ location }) => {
                 <ViewersAnalysisContainer />
             ) : type === 'video' ? (
                 <VideoAnalysisContainer />
-            ) : type === undefined ? (
+            ) : type === 'channel' ? (
                 <ChannelAnalysisContainer />
             ) : null}
         </AnalysisContainerBlock>

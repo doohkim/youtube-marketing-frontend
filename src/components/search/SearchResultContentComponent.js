@@ -165,20 +165,20 @@ const SearchResultContentComponent = ({ info, index, onToggle }) => {
                     </div>
                 </div>
                 <div className="search-channel-thumbnail-wrap">
-                    <Link to={`/channel/${channelId}`}>
+                    <Link to={`/channel/${channelId}/channel`}>
                         <img src={thumbnails} alt="thumbnail" />
                     </Link>
                 </div>
                 <div className="search-channel-description-wrap">
                     <Link
                         className="link-reset-wrap"
-                        to={`/channel/${channelId}`}
+                        to={`/channel/${channelId}/channel`}
                     >
                         <div>{title}</div>
                     </Link>
                     <Link
                         className="link-reset-wrap"
-                        to={`/channel/${channelId}`}
+                        to={`/channel/${channelId}/channel`}
                     >
                         <div className="search-channel-description-text">
                             {description}

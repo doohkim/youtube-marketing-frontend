@@ -50,25 +50,15 @@ const DetailChannelContainer = () => {
             <div className="DetailChannelContentWrap">
                 <DetailChannelInfoComponent />
 
-                <Category to={`/channel/${channelId}`} exact>
+                <Category to={`/channel/${channelId}/channel`} exact>
                     채널분석
                 </Category>
-                <Category to={`/channel/${channelId}?category=video`}>
-                    영상분석
-                </Category>
-                <Category to={`/channel/${channelId}?category=viewer`}>
+                <Category to={`/channel/${channelId}/video`}>영상분석</Category>
+                <Category to={`/channel/${channelId}/viewer`}>
                     시청자 분석
                 </Category>
-                {/* <Route
-                    path={`/channel/${channelId}`}
-                    component={ChannelAnalysisContainer}
-                />
                 <Route
-                    path={`/channel/${channelId}/video`}
-                    component={VideoAnalysisContainer}
-                /> */}
-                <Route
-                    path={`/channel/${channelId}`}
+                    path={`/channel/${channelId}/:type`}
                     component={AnalysisContainer}
                 />
             </div>
