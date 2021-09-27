@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ChannelSubscriberChangeChartComponent from '../../../../components/detail/analysis/ChannelSubscriberChangeChartComponent';
 
 const ChannelSubscriberChangeChartBlock = styled.div`
     width: 1080px;
@@ -9,7 +10,7 @@ const ChannelSubscriberChangeChartBlock = styled.div`
 const ChannelSubscriberChangeChart = () => {
     return (
         <ChannelSubscriberChangeChartBlock>
-            채널 구독자 차트
+            <ChannelSubscriberChangeChartComponent />
         </ChannelSubscriberChangeChartBlock>
     );
 };

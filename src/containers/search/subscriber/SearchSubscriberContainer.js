@@ -21,16 +21,18 @@ const SearchSubscriberContainer = ({ match }) => {
     const { type } = match.params;
     return (
         <SearchSubscriberContainerBlock>
-            <SearchInputContainer />
             {type === 'video' ? (
-                <SearchFilterVideoContainer />
+                <div>
+                    <SearchInputContainer />
+                    <SearchFilterVideoContainer />
+                    <SearchResultVideoContainer />
+                </div>
             ) : (
-                <SearchFilterContainer />
-            )}
-            {type === 'video' ? (
-                <SearchResultVideoContainer />
-            ) : (
-                <SearchResultContainer />
+                <div>
+                    <SearchInputContainer />
+                    <SearchFilterContainer />
+                    <SearchResultContainer />
+                </div>
             )}
         </SearchSubscriberContainerBlock>
     );

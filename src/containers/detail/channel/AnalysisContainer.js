@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ChannelAnalysisContainer from '../analysis/channel/ChannelAnalysisContainer';
 import VideoAnalysisContainer from '../analysis/video/VideoAnalysisContainer';
 import ViewersAnalysisContainer from '../analysis/views/ViewersAnalysisContainer';
+import qs from 'qs';
 
 const AnalysisContainerBlock = styled.div`
     width: 1080px;
@@ -14,17 +15,22 @@ const AnalysisContainerBlock = styled.div`
     }
 `;
 
-const AnalysisContainer = ({ match }) => {
-    const { type } = match.params;
-    console.log(match);
+const AnalysisContainer = ({ location }) => {
+    // const { type } = match.params;
+    const query = qs.parse(location.search, {
+        ignoreQueryPrefix: true,
+    });
+    const type = query.category;
+    console.log(type);
     return (
         <AnalysisContainerBlock>
-            {type === 'channel' ? (
-                <ChannelAnalysisContainer />
-            ) : type === 'viewer' ? (
+            {null}
+            {type === 'viewer' ? (
                 <ViewersAnalysisContainer />
             ) : type === 'video' ? (
                 <VideoAnalysisContainer />
+            ) : type === undefined ? (
+                <ChannelAnalysisContainer />
             ) : null}
         </AnalysisContainerBlock>
     );

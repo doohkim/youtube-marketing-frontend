@@ -2,19 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import VideoListContentComponent from '../../../../components/search/video/VideoListContentComponent';
 
-const VideoListContainerWrap = styled.div`
+const VideoAnalysisListContainerWrap = styled.div`
     width: 1061px;
     max-width: 1080px;
 
-    /* height: 1016px; */
+    /* height: 670px; */
     display: flex;
     flex-wrap: wrap;
     background: gray;
 `;
 
-const VideoListContainer = () => {
+const VideoAnalysisListContainer = () => {
     return (
-        <VideoListContainerWrap>
+        <VideoAnalysisListContainerWrap>
             <VideoListContentComponent />
             <VideoListContentComponent />
             <VideoListContentComponent />
@@ -23,16 +23,8 @@ const VideoListContainer = () => {
             <VideoListContentComponent />
             <VideoListContentComponent />
             <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-        </VideoListContainerWrap>
+        </VideoAnalysisListContainerWrap>
     );
 };
 
-export default VideoListContainer;
+export default VideoAnalysisListContainer;

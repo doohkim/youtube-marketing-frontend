@@ -66,16 +66,22 @@ const SearchResultContentComponentBlock = styled.div`
         .search-channel-description-wrap {
             flex: 1;
             height: 110px;
+            .link-reset-wrap {
+                text-decoration: none;
+                color: black;
+                background-color: #f59000;
 
-            .search-channel-description-text {
-                font-size: 14px;
-                display: block;
-                width: 340px;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                font-weight: 400;
-                white-space: nowrap;
+                .search-channel-description-text {
+                    font-size: 14px;
+                    display: block;
+                    width: 340px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    font-weight: 400;
+                    white-space: nowrap;
+                }
             }
+
             .search-channel-contact-wrap {
                 display: flex;
                 .search-channel-contact-icon {
@@ -131,6 +137,7 @@ const SearchResultContentComponentBlock = styled.div`
 
 const SearchResultContentComponent = ({ info, index, onToggle }) => {
     const {
+        channelId,
         title,
         isCertificated,
         thumbnails,
@@ -158,13 +165,25 @@ const SearchResultContentComponent = ({ info, index, onToggle }) => {
                     </div>
                 </div>
                 <div className="search-channel-thumbnail-wrap">
-                    <img src={thumbnails} alt="thumbnail" />
+                    <Link to={`/channel/${channelId}`}>
+                        <img src={thumbnails} alt="thumbnail" />
+                    </Link>
                 </div>
                 <div className="search-channel-description-wrap">
-                    <div>{title}</div>
-                    <div className="search-channel-description-text">
-                        {description}
-                    </div>
+                    <Link
+                        className="link-reset-wrap"
+                        to={`/channel/${channelId}`}
+                    >
+                        <div>{title}</div>
+                    </Link>
+                    <Link
+                        className="link-reset-wrap"
+                        to={`/channel/${channelId}`}
+                    >
+                        <div className="search-channel-description-text">
+                            {description}
+                        </div>
+                    </Link>
                     <p>음악</p>
                     <div className="search-channel-contact-wrap">
                         <div className="search-channel-contact-icon">
@@ -234,7 +253,7 @@ const SearchResultContentComponent = ({ info, index, onToggle }) => {
                 </div>
                 <div className="search-channel-present-video-thumbnail-wrap">
                     <div>
-                        <Link to="/detail/:id">
+                        <Link to={`/detail/${lastVideo.videoId}`}>
                             <img src={lastVideo.thumbnails} alt="thumbnail" />
                         </Link>
                     </div>

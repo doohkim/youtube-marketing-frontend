@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import VideoPerformanceSummaryComponent from '../../../../components/detail/analysis/video/VideoPerformanceSummaryComponent';
+import VideoUploadTermComponent from '../../../../components/detail/analysis/video/VideoUploadTermComponent';
+import VideoAnalysisListContainer from './VideoAnalysisListContainer';
 
 const VideoAnalysisContainerBlock = styled.div`
     width: 1080px;
@@ -8,7 +11,11 @@ const VideoAnalysisContainerBlock = styled.div`
 
 const VideoAnalysisContainer = () => {
     return (
-        <VideoAnalysisContainerBlock>비디오 분석</VideoAnalysisContainerBlock>
+        <VideoAnalysisContainerBlock>
+            <VideoPerformanceSummaryComponent />
+            <VideoUploadTermComponent />
+            <VideoAnalysisListContainer />
+        </VideoAnalysisContainerBlock>
     );
 };
 

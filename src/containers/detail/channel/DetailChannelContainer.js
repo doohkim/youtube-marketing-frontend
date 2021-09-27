@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import DetailChannelInfoComponent from '../../../components/detail/channel/DetailChannelInfoComponent';
 import DetailChannelThumbnailComponent from '../../../components/detail/channel/DetailChannelThumbnailComponent';
+
 import AnalysisContainer from './AnalysisContainer';
 
 const DetailChannelContainerBlock = styled.div`
@@ -41,21 +42,33 @@ const Category = styled(NavLink)`
         margin-left: 1rem;
     }
 `;
-const DetailChannelContainer = () => {
-    const id = 'asdf';
+const DetailChannelContainer = ({ channelId }) => {
+    console.log(channelId);
     return (
         <DetailChannelContainerBlock>
             <DetailChannelThumbnailComponent />
             <div className="DetailChannelContentWrap">
                 <DetailChannelInfoComponent />
-                {/* <Category to={`channel/${id}/`}>채널분석</Category> */}
-                <Category to={`channel/${id}/`} exact>
+
+                <Category to={`/channel/${channelId}`} exact>
                     채널분석
                 </Category>
-                <Category to="/channel/:id/video">영상분석</Category>
-                <Category to="/channel/:id/viewer">시청자 분석</Category>
+                <Category to={`/channel/${channelId}?category=video`}>
+                    영상분석
+                </Category>
+                <Category to={`/channel/${channelId}?category=viewer`}>
+                    시청자 분석
+                </Category>
+                {/* <Route
+                    path={`/channel/${channelId}`}
+                    component={ChannelAnalysisContainer}
+                />
                 <Route
-                    path="/channel/:id/:type"
+                    path={`/channel/${channelId}/video`}
+                    component={VideoAnalysisContainer}
+                /> */}
+                <Route
+                    path={`/channel/${channelId}`}
                     component={AnalysisContainer}
                 />
             </div>

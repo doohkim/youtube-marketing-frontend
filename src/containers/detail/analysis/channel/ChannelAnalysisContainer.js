@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ChannelDailyViewsChart from './ChannelDailyViewsChart';
 import ChannelPerformanceSummaryChart from './ChannelPerformanceSummaryChart';
 import ChannelSubscriberChangeChart from './ChannelSubscriberChangeChart';
 
@@ -14,7 +13,6 @@ const ChannelAnalysisContainer = () => {
         <ChannelAnalysisContainerBlock>
             <ChannelPerformanceSummaryChart />
             <ChannelSubscriberChangeChart />
-            <ChannelDailyViewsChart />
         </ChannelAnalysisContainerBlock>
     );
 };
