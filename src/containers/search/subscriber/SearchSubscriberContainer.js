@@ -5,6 +5,7 @@ import SearchInputContainer from '../../SearchInputContainer';
 import SearchResultContainer from '../../SearchResultContainer';
 import SearchFilterVideoContainer from '../../../components/search/video/SearchFilterVideoContainer';
 import SearchResultVideoContainer from '../video/SearchResultVideoContainer';
+import SearchMarketContainer from '../market/SearchMarketContainer';
 const SearchSubscriberContainerBlock = styled.div`
     /* box-sizing: border-box; */
     width: 1080px;
@@ -27,6 +28,8 @@ const SearchSubscriberContainer = ({ match }) => {
                     <SearchFilterVideoContainer />
                     <SearchResultVideoContainer />
                 </div>
+            ) : type === 'market' ? (
+                <SearchMarketContainer />
             ) : (
                 <div>
                     <SearchInputContainer />

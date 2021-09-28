@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BsStar, BsFillPersonFill } from 'react-icons/bs';
+import { BsStar } from 'react-icons/bs';
 
 import { AiFillInstagram, AiFillYoutube, AiFillFacebook } from 'react-icons/ai';
 import { BiWorld, BiShareAlt } from 'react-icons/bi';

@@ -17,12 +17,7 @@ const AnalysisContainerBlock = styled.div`
 
 const AnalysisContainer = ({ match }) => {
     const { type } = match.params;
-    // const query = qs.parse(location.search, {
-    //     ignoreQueryPrefix: true,
-    // });
-    // const type = query.category;
 
-    console.log(type);
     return (
         <AnalysisContainerBlock>
             {type === 'viewer' ? (

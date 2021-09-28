@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineComment } from 'react-icons/ai';
 import { IoIosShareAlt, IoIosThumbsUp, IoIosThumbsDown } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 const MoreButton = styled.button`
     all: unset;
     /* position: absolute; */
@@ -48,6 +49,10 @@ const DetailVideoInfoWrap = styled.div`
             .detail-video-view-diver {
                 border-left: 1px solid #e2e2e2;
             }
+        }
+        .advertise-market-wrap {
+            display: flex;
+            justify-content: flex-end;
         }
         h3 {
             width: 745px;
@@ -124,6 +129,11 @@ const DetailVideoInfoComponent = () => {
                             ...더보기
                         </MoreButton>
                     )}
+                </div>
+                <div className="advertise-market-wrap">
+                    <Link to="search/market">
+                        <button>상품 마켓</button>
+                    </Link>
                 </div>
             </div>
             <div className="detail-share-image-block">

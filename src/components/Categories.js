@@ -16,6 +16,10 @@ const categories = [
         name: 'videoRank',
         text: '영상순위',
     },
+    {
+        name: 'advertiseMarket',
+        text: '마켓',
+    },
 ];
 
 const Category = styled(NavLink)`
@@ -64,6 +68,7 @@ const Categories = () => {
             <Category to="/search/channel">{categories['0'].text}</Category>
             <Category to="/search/subscriber">{categories['1'].text}</Category>
             <Category to="/search/video">{categories['2'].text}</Category>
+            <Category to="/search/market">{categories['3'].text}</Category>
 
             {/* 여기서 이 거 가지고 match 이용하고 api도 화면도 바꿔주자
              <Route path="/search/video" component={SearchRankContainer} /> */}
