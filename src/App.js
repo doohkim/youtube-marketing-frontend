@@ -4,6 +4,9 @@ import DetailVideoPage from './pages/DetailVideoPage';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import ChannelPage from './pages/ChannelPage';
+import MarketPage from './pages/MarketPage';
+import OrderPage from './pages/OrderPage';
+
 const App = () => {
     return (
         <div>
@@ -12,6 +15,8 @@ const App = () => {
             {/* <Route path="/search/:type" component={SearchPage} /> */}
             <Route path="/detail" component={DetailVideoPage} />
             <Route path="/channel" component={ChannelPage} />
+            <Route path="/market" component={MarketPage} />
+            <Route path="/order" component={OrderPage} />
         </div>
     );
 };
