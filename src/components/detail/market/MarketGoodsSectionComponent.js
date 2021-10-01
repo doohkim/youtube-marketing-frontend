@@ -4,19 +4,22 @@ import MarketSelectProductListContainer from '../../../containers/detail/market/
 
 const MarketGoodsSectionComponentWrap = styled.div`
     width: 1050px;
+    height: auto;
     display: flex;
+
     .thumb {
         width: 430px;
         height: 552px;
-        padding-left: 1rem;
         img {
+            margin-left: 5rem;
             max-width: 100%;
-            height: auto;
+            height: 100%;
         }
     }
 
     .goods-info {
-        margin-left: 3rem;
+        /* margin-left: 3rem; */
+        height: auto;
         .goods-name {
             width: 560px;
             height: 68px;
@@ -74,23 +77,23 @@ const MarketGoodsSectionComponent = () => {
                 </p>
                 <p className="goods-price"> 2,900원</p>
                 <div className="godds-description">
-                    <dl class="list">
+                    <dl className="list">
                         <dt className="tit">판매단위</dt>
                         <dd className="desc">1봉</dd>
                     </dl>
-                    <dl class="list">
+                    <dl className="list">
                         <dt className="tit">중량/용량</dt>
                         <dd className="desc">제품별 상이</dd>
                     </dl>
-                    <dl class="list">
+                    <dl className="list">
                         <dt className="tit">배송구분</dt>
                         <dd className="desc">샛별배송/택배배송</dd>
                     </dl>
-                    <dl class="list">
+                    <dl className="list">
                         <dt className="tit">원산지</dt>
                         <dd className="desc">이탈리아</dd>
                     </dl>
-                    <dl class="list">
+                    <dl className="list">
                         <dt className="tit">포장타입</dt>
                         <dd className="desc">
                             상온/종이포장
@@ -99,21 +102,21 @@ const MarketGoodsSectionComponent = () => {
                             </strong>
                         </dd>
                     </dl>
-                    <dl class="list">
+                    <dl className="list">
                         <dt className="tit">유통기한</dt>
                         <dd className="desc">
                             수령일 포함 최소 146일 남은 제품을 보내 드립니다
                         </dd>
                     </dl>
-                    <dl class="list">
+                    <dl className="list">
                         <dt className="tit">안내사항</dt>
                         <dd className="desc">
                             해당 상품의 최소 구매수량은 2개입니다. 구매시 참고
                             부탁드립니다.
                         </dd>
                     </dl>
+                    <MarketSelectProductListContainer />
                 </div>
-                <MarketSelectProductListContainer />
             </div>
         </MarketGoodsSectionComponentWrap>
     );
