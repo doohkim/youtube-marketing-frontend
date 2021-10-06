@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MarketGoodsInfoContainer from './MarketGoodsInfoContainer';
+import MarketGoodsInfoComponent from '../../../components/detail/market/MarketGoodsInfoComponent';
 import MarketGoodsSectionComponent from '../../../components/detail/market/MarketGoodsSectionComponent';
 
 const MarketDetailContainerBlock = styled.div`
@@ -16,7 +16,7 @@ const MarketDetailContainer = () => {
     return (
         <MarketDetailContainerBlock>
             <MarketGoodsSectionComponent />
-            <MarketGoodsInfoContainer />
+            <MarketGoodsInfoComponent />
         </MarketDetailContainerBlock>
     );
 };

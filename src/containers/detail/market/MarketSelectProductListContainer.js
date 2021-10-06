@@ -13,11 +13,12 @@ import {
 } from '../../../modules/productDetailSelect';
 const MarketSelectProductListContainerBlock = styled.div`
     font-family: noto sans;
-    height: auto;
+    min-height: 0px;
+    max-height: 150px;
     color: #333;
     letter-spacing: 0;
     width: 560px;
-    height: 232px;
+    height: auto;
 `;
 
 const MarketSelectProductListContainer = () => {

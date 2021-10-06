@@ -27,13 +27,22 @@ const MarketGoodsInsertComponentWrap = styled.form`
     }
 `;
 
-const MarketGoodsInsertComponent = ({ input, onInsert, onChangeInput }) => {
+const MarketGoodsInsertComponent = ({
+    selectProducts,
+    input,
+    onInsert,
+    onChangeInput,
+}) => {
     const onChange = useCallback(
         (e) => {
+            // const dd = selectProducts.find(
+            //     (product) => product.text === e.target.value,
+            // );
+            // console.log(dd);
             onInsert(e.target.value);
-            onChangeInput('상품선택');
+            onChangeInput(input);
         },
-        [onChangeInput],
+        [onChangeInput, selectProducts],
     );
     const product_list = [
         {

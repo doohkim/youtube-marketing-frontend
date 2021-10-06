@@ -60,6 +60,18 @@ const MarketGoodsSectionComponentWrap = styled.div`
                     }
                 }
             }
+            .cartPut {
+                background: #8b00ff;
+                display: block;
+                font-size: 16px;
+                line-height: 52px;
+                letter-spacing: -0.1px;
+                text-align: center;
+                width: 560px;
+                height: 56px;
+                color: white;
+                padding-bottom: 2px;
+            }
         }
     }
 `;
@@ -116,6 +128,7 @@ const MarketGoodsSectionComponent = () => {
                         </dd>
                     </dl>
                     <MarketSelectProductListContainer />
+                    <button className="cartPut">장바구니 담기</button>
                 </div>
             </div>
         </MarketGoodsSectionComponentWrap>

@@ -4,8 +4,12 @@ import MarketSelectedProductItemComponent from './MarketSelectedProductItemCompo
 
 const MarketGoodsSelectedProductListComponentWrap = styled.div`
     width: 560px;
-    height: 150px;
-    overflow: auto;
+    height: auto;
+    max-height: 90px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 `;
 
 const MarketGoodsSelectedProductListComponent = ({
