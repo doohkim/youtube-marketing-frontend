@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MarketGoodsIntroComponent from './info/MarketGoodsIntroComponent';
 import MarketGoodsPickComponent from './info/MarketGoodsPickComponent';
 import MarketGoodsPointComponent from './info/MarketGoodsPointComponent';
+import MarketGoodsTipComponent from './info/MarketGoodsTipComponent';
 
 const MarketGoodsInfoComponentBlock = styled.div`
     margin-top: 50px;
@@ -19,12 +20,13 @@ const MarketGoodsInfoComponentBlock = styled.div`
     }
 `;
 
-const MarketGoodsInfoComponent = () => {
+const MarketGoodsInfoComponent = ({ product_list }) => {
     return (
         <MarketGoodsInfoComponentBlock>
             <MarketGoodsIntroComponent />
             <MarketGoodsPointComponent />
-            <MarketGoodsPickComponent />
+            <MarketGoodsPickComponent product_list={product_list} />
+            <MarketGoodsTipComponent />
         </MarketGoodsInfoComponentBlock>
     );
 };

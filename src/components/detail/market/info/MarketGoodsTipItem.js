@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MarketGoodsPickItemWrap = styled.div`
+const MarketGoodsTipItemWrap = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .pic {
         width: 1010px;
         /* word-break: break-all; */
@@ -26,8 +27,6 @@ const MarketGoodsPickItemWrap = styled.div`
             strong {
                 font-weight: 700;
             }
-        }
-        .pickInfoBox {
             b {
                 font-weight: 700;
             }
@@ -35,28 +34,24 @@ const MarketGoodsPickItemWrap = styled.div`
     }
 `;
 
-const MarketGoodsPickItem = ({ product }) => {
-    const { descriptionList } = product;
-
+const MarketGoodsTipItem = ({ tip }) => {
+    const { descriptionList } = tip;
     return (
-        <MarketGoodsPickItemWrap>
+        <MarketGoodsTipItemWrap>
             <div className="pic">
-                {product.thumbnail && <img src={product.thumbnail} />}
+                {tip.thumbnail && <img src={tip.thumbnail} />}
             </div>
             <div className="word">
-                <strong className="subTitle">
-                    <span>{product.name}</span>
-                </strong>
-
+                <strong className="subTitle">{tip.title}</strong>
                 {descriptionList.map((description, key) => (
-                    <div className="pickInfoBox" key={key}>
-                        <b>{description.subTitle}</b>
-                        {description.subInfo}
+                    <div key={key}>
+                        <b>・</b>
+                        {description}
                         <br />
                     </div>
                 ))}
             </div>
-        </MarketGoodsPickItemWrap>
+        </MarketGoodsTipItemWrap>
     );
 };
-export default MarketGoodsPickItem;
+export default MarketGoodsTipItem;

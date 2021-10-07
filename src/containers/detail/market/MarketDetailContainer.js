@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import MarketGoodsInfoComponent from '../../../components/detail/market/MarketGoodsInfoComponent';
 import MarketGoodsSectionComponent from '../../../components/detail/market/MarketGoodsSectionComponent';
-
+import { product_list } from '../../../utils/market/marketData';
 const MarketDetailContainerBlock = styled.div`
     width: 1080px;
     height: auto;
@@ -13,10 +13,11 @@ const MarketDetailContainerBlock = styled.div`
 `;
 
 const MarketDetailContainer = () => {
+    const [orders, setOrders] = useState([]);
     return (
         <MarketDetailContainerBlock>
             <MarketGoodsSectionComponent />
-            <MarketGoodsInfoComponent />
+            <MarketGoodsInfoComponent product_list={product_list} />
         </MarketDetailContainerBlock>
     );
 };

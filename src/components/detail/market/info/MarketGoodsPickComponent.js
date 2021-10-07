@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import MarketGoodsPickItem from './MarketGoodsPickItem';
-
 const MarketGoodsPickComponentWrap = styled.div`
     display: flex;
     flex-direction: column;
@@ -41,29 +40,7 @@ const MarketGoodsPickComponentWrap = styled.div`
     }
 `;
 
-const MarketGoodsPickComponent = () => {
-    const product_list = [
-        {
-            id: 1,
-            name: '핫 치킨 브리또',
-            price: 2900,
-            thumbnail:
-                'https://img-cf.kurly.com/shop/data/goodsview/20211005/gv00000231520_1.jpg',
-        },
-        {
-            id: 2,
-            name: '청양마요 브리또',
-            price: 2900,
-            thumbnail: null,
-        },
-        {
-            id: 3,
-            name: '양마요 브리또',
-            price: 2900,
-            thumbnail: null,
-        },
-    ];
-
+const MarketGoodsPickComponent = ({ product_list }) => {
     return (
         <MarketGoodsPickComponentWrap>
             <div className="title">
@@ -71,7 +48,7 @@ const MarketGoodsPickComponent = () => {
                     <span>{"Kurly's Check Pick"}</span>
                 </h3>
             </div>
-            {product_list.map((product) => (
+            {product_list.map((product, key) => (
                 <MarketGoodsPickItem key={product.id} product={product} />
             ))}
         </MarketGoodsPickComponentWrap>
