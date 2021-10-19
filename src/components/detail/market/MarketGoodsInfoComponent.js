@@ -39,9 +39,9 @@ const MarketGoodsInfoComponent = ({ post, postError, loading }) => {
         <MarketGoodsInfoComponentBlock>
             {!loading && post && (
                 <div>
-                    <MarketGoodsIntroComponent post={post} loading={loading} />
-                    <MarketGoodsPointComponent post={post} loading={loading} />
-                    <MarketGoodsPickComponent post={post} loading={loading} />
+                    <MarketGoodsIntroComponent post={post} />
+                    <MarketGoodsPointComponent post={post} />
+                    <MarketGoodsPickComponent post={post} />
                 </div>
             )}
 

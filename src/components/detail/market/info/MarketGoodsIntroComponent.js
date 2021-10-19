@@ -7,8 +7,11 @@ const MarketGoodsIntroComponentWrap = styled.div`
     align-items: center;
     .pic {
         width: 1010px;
+        height: 670px;
         img {
+            width: 1010px;
             max-width: 100%;
+            height: 670px;
         }
     }
     .context {
@@ -33,20 +36,29 @@ const MarketGoodsIntroComponentWrap = styled.div`
 `;
 
 const MarketGoodsIntroComponent = ({ post }) => {
-    const { post_images, post_descriptions } = post;
+    const { post_descriptions, post_images } = post;
     return (
         <MarketGoodsIntroComponentWrap>
-            <div className="pic">
-                <img src={post_images[0].image} />
-            </div>
-            <div className="context">
-                <h3>
-                    <small>{post_descriptions.title}</small>
-                    <br />
-                    {post_descriptions.sub_title}
-                </h3>
-                <div className="word">{post_descriptions.content}</div>
-            </div>
+            {post_images && (
+                <div className="pic">
+                    <img
+                        src={post.post_images[0].image.replace(
+                            'youtube-market-front.s3.amazonaws.com/https%3A/',
+                            '',
+                        )}
+                    />
+                </div>
+            )}
+            {post_descriptions && (
+                <div className="context">
+                    <h3>
+                        <small>{post_descriptions.title}</small>
+                        <br />
+                        {post_descriptions.sub_title}
+                    </h3>
+                    <div className="word">{post_descriptions.content}</div>
+                </div>
+            )}
         </MarketGoodsIntroComponentWrap>
     );
 };
