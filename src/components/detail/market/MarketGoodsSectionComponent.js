@@ -28,6 +28,7 @@ const MarketGoodsSectionComponentWrap = styled.div`
                 .name {
                     width: 560px;
                     height: 68px;
+                    display: block;
                     padding-right: 60px;
                     font-weight: 700;
                     font-size: 24px;
@@ -55,7 +56,6 @@ const MarketGoodsSectionComponentWrap = styled.div`
                 height: 38px;
             }
             .godds-description {
-                float: right;
                 width: 560px;
                 align-items: center;
                 justify-content: center;
