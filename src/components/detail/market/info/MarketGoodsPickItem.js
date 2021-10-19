@@ -36,25 +36,24 @@ const MarketGoodsPickItemWrap = styled.div`
 `;
 
 const MarketGoodsPickItem = ({ product }) => {
-    const { product_descriptions, title } = product;
-    console.log(product_descriptions);
+    const { product_descriptions, product_images, name } = product;
     return (
         <MarketGoodsPickItemWrap>
             <div className="pic">
-                {product.thumbnail && <img src={product.thumbnail} />}
+                {product_images && <img src={product_images[0]} />}
             </div>
             <div className="word">
                 <strong className="subTitle">
-                    <span>{product.name}</span>
+                    <span>{name}</span>
                 </strong>
 
-                {/* {product_descriptions.map((description, key) => (
+                {product_descriptions.map((description, key) => (
                     <div className="pickInfoBox" key={key}>
-                        <b>{description.subTitle}</b>
-                        {description.subInfo}
+                        <b>{description.title}</b>
+                        {description.content}
                         <br />
                     </div>
-                ))} */}
+                ))}
             </div>
         </MarketGoodsPickItemWrap>
     );

@@ -40,7 +40,7 @@ const MarketGoodsPickComponentWrap = styled.div`
     }
 `;
 
-const MarketGoodsPickComponent = ({ post, loading }) => {
+const MarketGoodsPickComponent = ({ post }) => {
     return (
         <MarketGoodsPickComponentWrap>
             <div className="title">
@@ -48,8 +48,7 @@ const MarketGoodsPickComponent = ({ post, loading }) => {
                     <span>{"Kurly's Check Pick"}</span>
                 </h3>
             </div>
-            {!loading &&
-                post &&
+            {post &&
                 post.products.map((product) => (
                     <MarketGoodsPickItem key={product.id} product={product} />
                 ))}

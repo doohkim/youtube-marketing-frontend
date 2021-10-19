@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import MarketGoodsPickItem from './MarketGoodsPickItem';
 import MarketGoodsTipItem from './MarketGoodsTipItem';
 
 const MarketGoodsTipComponentWrap = styled.div`
@@ -40,21 +39,25 @@ const MarketGoodsTipComponentWrap = styled.div`
     }
 `;
 
-const MarketGoodsTipComponent = ({ post, loading }) => {
+const MarketGoodsTipComponent = ({ post }) => {
+    const { post_tips } = post;
     return (
         <MarketGoodsTipComponentWrap>
-            <div className="title">
-                <h3>
-                    <span>{"Kurly's Check Tip"}</span>
-                </h3>
-            </div>
-            <div className="tipBox">
-                {!loading &&
-                    post &&
-                    post.post_descriptions.map((tip) => (
-                        <MarketGoodsTipItem key={tip.id} tip={tip} />
-                    ))}
-            </div>
+            {post_tips.length !== 0 && (
+                <div>
+                    <div className="title">
+                        <h3>
+                            <span>{"Kurly's Check Tip"}</span>
+                        </h3>
+                    </div>
+                    <div className="tipBox">
+                        {post &&
+                            post_tips.map((tip) => (
+                                <MarketGoodsTipItem key={tip.id} tip={tip} />
+                            ))}
+                    </div>
+                </div>
+            )}
         </MarketGoodsTipComponentWrap>
     );
 };

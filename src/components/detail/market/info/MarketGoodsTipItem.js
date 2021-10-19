@@ -35,21 +35,16 @@ const MarketGoodsTipItemWrap = styled.div`
 `;
 
 const MarketGoodsTipItem = ({ tip }) => {
-    const { descriptionList } = tip;
     return (
         <MarketGoodsTipItemWrap>
-            <div className="pic">
-                {tip.thumbnail && <img src={tip.thumbnail} />}
-            </div>
+            <div className="pic">{tip.image && <img src={tip.image} />}</div>
             <div className="word">
                 <strong className="subTitle">{tip.title}</strong>
-                {descriptionList.map((description, key) => (
-                    <div key={key}>
-                        <b>・</b>
-                        {description}
-                        <br />
-                    </div>
-                ))}
+                <div>
+                    <b>・</b>
+                    {tip.content}
+                    <br />
+                </div>
             </div>
         </MarketGoodsTipItemWrap>
     );

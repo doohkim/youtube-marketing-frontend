@@ -40,8 +40,9 @@ const MarketGoodsInfoComponent = ({ post, postError, loading }) => {
             {!loading && post && (
                 <div>
                     <MarketGoodsIntroComponent post={post} />
-                    <MarketGoodsPointComponent post={post} />
+                    {/* <MarketGoodsPointComponent post={post} /> */}
                     <MarketGoodsPickComponent post={post} />
+                    <MarketGoodsTipComponent post={post} />
                 </div>
             )}
 
