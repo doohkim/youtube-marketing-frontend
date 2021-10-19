@@ -36,8 +36,8 @@ const MarketGoodsPickItemWrap = styled.div`
 `;
 
 const MarketGoodsPickItem = ({ product }) => {
-    const { descriptionList } = product;
-
+    const { product_descriptions, title } = product;
+    console.log(product_descriptions);
     return (
         <MarketGoodsPickItemWrap>
             <div className="pic">
@@ -48,13 +48,13 @@ const MarketGoodsPickItem = ({ product }) => {
                     <span>{product.name}</span>
                 </strong>
 
-                {descriptionList.map((description, key) => (
+                {/* {product_descriptions.map((description, key) => (
                     <div className="pickInfoBox" key={key}>
                         <b>{description.subTitle}</b>
                         {description.subInfo}
                         <br />
                     </div>
-                ))}
+                ))} */}
             </div>
         </MarketGoodsPickItemWrap>
     );

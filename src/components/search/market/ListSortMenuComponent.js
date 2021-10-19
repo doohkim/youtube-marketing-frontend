@@ -37,22 +37,26 @@ const ListSortMenuComponent = () => {
     return (
         <ListSortMenuComponentBlock>
             <p className="count-number">총 {count} 건</p>
-            <div class="sort-list-wrap">
-                <ul class="sort-list">
+            <div className="sort-list-wrap">
+                <ul className="sort-list">
                     <li>
-                        <Link className="sort-menu">추천순</Link>
+                        <Link className="sort-menu" to="#">
+                            추천순
+                        </Link>
                     </li>
 
                     <li>
-                        <Link className="sort-menu">|&nbsp;&nbsp;인기순</Link>
+                        <Link className="sort-menu" to="#">
+                            |&nbsp;&nbsp;인기순
+                        </Link>
                     </li>
                     <li>
-                        <Link className="sort-menu">
+                        <Link className="sort-menu" to="#">
                             |&nbsp;&nbsp;낮은 가격순
                         </Link>
                     </li>
                     <li>
-                        <Link className="sort-menu">
+                        <Link className="sort-menu" to="#">
                             |&nbsp;&nbsp;높은 가격순
                         </Link>
                     </li>

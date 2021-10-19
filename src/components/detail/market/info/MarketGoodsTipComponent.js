@@ -40,34 +40,7 @@ const MarketGoodsTipComponentWrap = styled.div`
     }
 `;
 
-const MarketGoodsTipComponent = () => {
-    const tipList = [
-        {
-            id: 1,
-            title: '사용법',
-            thumbnail: null,
-            descriptionList: [
-                '입구의 마개를 돌리면 앰플이 개봉됩니다.',
-                '한 번에 쓰기 많게 느껴진다면 마개를 꼭 닫아 보관하세요. 한 번 개봉한 제품은 가급적 빨리 쓰기를 권해드려요.',
-            ],
-        },
-        {
-            id: 2,
-            title: '주의사항',
-            thumbnail: null,
-            descriptionList: [
-                '피자에서 간혹 발견되는 검은 색 반점은 옥수수씨로 제품의 변질이 아니니 안심하고 섭취하세요.',
-                '피자 도우 바닥에 보이는 갈색 자국은 돌판에 직접 굽는 과정에서 발생한 것으로 제품의 변질이 아니니 안심하고 섭취하세요.',
-            ],
-        },
-        {
-            id: 3,
-            title: '보관법',
-            thumbnail: null,
-            descriptionList: ['-18ºC 이하에서 냉동 보관하세요.'],
-        },
-    ];
-
+const MarketGoodsTipComponent = ({ post, loading }) => {
     return (
         <MarketGoodsTipComponentWrap>
             <div className="title">
@@ -76,9 +49,11 @@ const MarketGoodsTipComponent = () => {
                 </h3>
             </div>
             <div className="tipBox">
-                {tipList.map((tip) => (
-                    <MarketGoodsTipItem key={tip.id} tip={tip} />
-                ))}
+                {!loading &&
+                    post &&
+                    post.post_descriptions.map((tip) => (
+                        <MarketGoodsTipItem key={tip.id} tip={tip} />
+                    ))}
             </div>
         </MarketGoodsTipComponentWrap>
     );

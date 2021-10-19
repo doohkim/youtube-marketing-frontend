@@ -9,19 +9,23 @@ const GoodsItemBlock = styled.div`
     /* display: block; */
 
     /* background: green; */
-    .thumb {
-        /* display: block;
+    /* .thumb { */
+    /* display: block;
         position: relative; */
-        width: 100%;
+    /* width: 338px;
         height: 435px;
-        background-color: #f9f8f9;
-        /* padding: 10px; */
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+        background-color: #f9f8f9; */
+    /* padding: 10px; */
+    Link {
+        width: 338px;
+        height: 435px;
     }
+    img {
+        max-width: 338px;
+        /* height: auto; */
+        height: 435px;
+    }
+    /* } */
     .info {
         display: flex;
         flex-direction: column;
@@ -45,16 +49,17 @@ const GoodsItemBlock = styled.div`
     }
 `;
 
-const GoodsItem = () => {
+const GoodsItem = ({ post }) => {
+    const { id, title, post_images, products } = post;
     return (
         <GoodsItemBlock>
-            <div className="thumb">
-                <Link to="/market">
-                    <img src="https://img-cf.kurly.com/shop/data/goods/1632810556406l0.jpg" />
-                </Link>
-            </div>
-            <Link className="info" to="/market">
-                <span className="product-title">[비비고] 납작군만두 1.4kg</span>
+            {/* <div className="thumb"> */}
+            <Link to={`/market/${id}`}>
+                <img src={post_images[0]} />
+            </Link>
+            {/* </div> */}
+            <Link className="info" to={`/market/${id}`}>
+                <span className="product-title">{title}</span>
                 <span className="price">9,980원</span>
             </Link>
         </GoodsItemBlock>

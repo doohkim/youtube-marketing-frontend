@@ -33,7 +33,7 @@ const MarketSelectProductListContainer = () => {
     return (
         <MarketSelectProductListContainerBlock>
             <MarketGoodsInsertComponent
-                selectProducts={selectProducts}
+                selectPrcreateRequestSagaoducts={selectProducts}
                 onInsert={onInsert}
                 input={input}
                 onChangeInput={onChangeInput}

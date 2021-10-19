@@ -52,7 +52,7 @@ const MarketGoodsPointComponentWrap = styled.div`
     }
 `;
 
-const MarketGoodsPointComponent = () => {
+const MarketGoodsPointComponent = ({ post, loading }) => {
     return (
         <MarketGoodsPointComponentWrap>
             <div className="title">

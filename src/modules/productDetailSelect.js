@@ -5,7 +5,7 @@ const INCREASE = 'productDetailSelect/INCREASE';
 const DECREASE = 'productDetailSelect/DECREASE';
 const CHANGE_INPUT = 'productDetailSelect/CHANGE_INPUT';
 const INSERT = 'productDetailSelect/INSERT';
-const TOGGLE = 'productDetailSelect/TOGGLE';
+// const TOGGLE = 'productDetailSelect/TOGGLE';
 const REMOVE = 'productDetailSelect/REMOVE';
 
 export const increase = createAction(INCREASE);

@@ -29,11 +29,19 @@ const InnerGoodsListComponentBlock = styled.div`
     }
 `;
 
-const InnerGoodsListComponent = () => {
+const InnerGoodsListComponent = ({ data }) => {
+    console.log('goodsListComponent', data);
     return (
         <InnerGoodsListComponentBlock>
             <ul className="list">
-                <li>
+                {/* {data.map((item) => (
+                    <div>
+                        <li>
+                            <GoodsItem item={item} />
+                        </li>
+                    </div>
+                ))} */}
+                {/* <li>
                     <GoodsItem />
                 </li>
                 <li>
@@ -68,7 +76,7 @@ const InnerGoodsListComponent = () => {
                 </li>
                 <li>
                     <GoodsItem />
-                </li>
+                </li> */}
             </ul>
         </InnerGoodsListComponentBlock>
     );

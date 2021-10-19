@@ -15,7 +15,7 @@ const App = () => {
             {/* <Route path="/search/:type" component={SearchPage} /> */}
             <Route path="/detail" component={DetailVideoPage} />
             <Route path="/channel" component={ChannelPage} />
-            <Route path="/market" component={MarketPage} />
+            <Route path="/market/:postId" component={MarketPage} />
             <Route path="/order" component={OrderPage} />
         </div>
     );

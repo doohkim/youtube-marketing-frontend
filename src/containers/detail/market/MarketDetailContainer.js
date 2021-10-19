@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import MarketGoodsInfoComponent from '../../../components/detail/market/MarketGoodsInfoComponent';
 import MarketGoodsSectionComponent from '../../../components/detail/market/MarketGoodsSectionComponent';
-import { product_list } from '../../../utils/market/marketData';
+import { readPost, unloadPost } from '../../../modules/post';
+// import { product_list } from '../../../utils/market/marketData';
 const MarketDetailContainerBlock = styled.div`
     width: 1080px;
     height: auto;
@@ -12,14 +15,35 @@ const MarketDetailContainerBlock = styled.div`
     background: white;
 `;
 
-const MarketDetailContainer = () => {
-    const [orders, setOrders] = useState([]);
+const MarketDetailContainer = ({ match }) => {
+    const { postId } = match.params;
+    const dispatch = useDispatch();
+    const { post, postError, loading } = useSelector(({ post, loading }) => ({
+        post: post.post,
+        postError: post.postError,
+        loading: loading['post/READ_POST'],
+    }));
+    useEffect(() => {
+        dispatch(readPost(postId));
+        // 언마운트될 때 리덕스에서 포스트 데이터 없애기
+        return () => {
+            dispatch(unloadPost());
+        };
+    }, [dispatch, postId]);
     return (
         <MarketDetailContainerBlock>
-            <MarketGoodsSectionComponent />
-            <MarketGoodsInfoComponent product_list={product_list} />
+            <MarketGoodsSectionComponent
+                post={post}
+                postError={postError}
+                loading={loading}
+            />
+            <MarketGoodsInfoComponent
+                post={post}
+                postError={postError}
+                loading={loading}
+            />
         </MarketDetailContainerBlock>
     );
 };
 
-export default MarketDetailContainer;
+export default withRouter(MarketDetailContainer);

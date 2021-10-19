@@ -20,13 +20,32 @@ const MarketGoodsInfoComponentBlock = styled.div`
     }
 `;
 
-const MarketGoodsInfoComponent = ({ product_list }) => {
+const MarketGoodsInfoComponent = ({ post, postError, loading }) => {
+    if (postError) {
+        if (postError.message && postError.status === 404) {
+            return (
+                <MarketGoodsInfoComponentBlock>
+                    존재하지 않는 포스트 입니다.
+                </MarketGoodsInfoComponentBlock>
+            );
+        }
+        return (
+            <MarketGoodsInfoComponentBlock>
+                오류 발생!
+            </MarketGoodsInfoComponentBlock>
+        );
+    }
     return (
         <MarketGoodsInfoComponentBlock>
-            <MarketGoodsIntroComponent />
-            <MarketGoodsPointComponent />
-            <MarketGoodsPickComponent product_list={product_list} />
-            <MarketGoodsTipComponent />
+            {!loading && post && (
+                <div>
+                    <MarketGoodsIntroComponent post={post} loading={loading} />
+                    <MarketGoodsPointComponent post={post} loading={loading} />
+                    <MarketGoodsPickComponent post={post} loading={loading} />
+                </div>
+            )}
+
+            {/* <MarketGoodsTipComponent post={post} loading={loading} /> */}
         </MarketGoodsInfoComponentBlock>
     );
 };
