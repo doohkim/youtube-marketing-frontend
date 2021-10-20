@@ -32,35 +32,16 @@ const MarketGoodsInsertComponent = ({
     input,
     onInsert,
     onChangeInput,
+    products,
 }) => {
     const onChange = useCallback(
         (e) => {
-            // const dd = selectProducts.find(
-            //     (product) => product.text === e.target.value,
-            // );
-            // console.log(dd);
             onInsert(e.target.value);
             onChangeInput(input);
         },
         [onChangeInput, selectProducts],
     );
-    const product_list = [
-        {
-            id: 1,
-            name: '핫 치킨 브리또',
-            price: 2900,
-        },
-        {
-            id: 2,
-            name: '청양마요 브리또',
-            price: 2900,
-        },
-        {
-            id: 3,
-            name: '양마요 브리또',
-            price: 2900,
-        },
-    ];
+
     // div로 select 만드는것 고려
     return (
         <MarketGoodsInsertComponentWrap>
@@ -69,7 +50,7 @@ const MarketGoodsInsertComponent = ({
                 <option value="" hidden>
                     상품 선택
                 </option>
-                {product_list.map((product) => (
+                {products.map((product) => (
                     <option key={product.id} value={product.name}>
                         &nbsp;
                         {`${product.name} ${product.price}원`}

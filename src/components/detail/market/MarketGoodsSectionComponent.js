@@ -195,7 +195,9 @@ const MarketGoodsSectionComponent = ({ post, loading, postError }) => {
                                     <dd className="desc">{post.guides}</dd>
                                 </dl>
                             )}
-                            <MarketSelectProductListContainer />
+                            <MarketSelectProductListContainer
+                                products={post.products}
+                            />
                             <button className="cartPut">장바구니 담기</button>
                         </div>
                     </div>

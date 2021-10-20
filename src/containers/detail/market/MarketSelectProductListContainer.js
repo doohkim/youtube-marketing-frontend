@@ -21,7 +21,7 @@ const MarketSelectProductListContainerBlock = styled.div`
     height: auto;
 `;
 
-const MarketSelectProductListContainer = () => {
+const MarketSelectProductListContainer = ({ products }) => {
     const { input, selectProducts } = useSelector(
         ({ productDetailSelect }) => ({
             input: productDetailSelect.input,
@@ -34,6 +34,7 @@ const MarketSelectProductListContainer = () => {
         <MarketSelectProductListContainerBlock>
             <MarketGoodsInsertComponent
                 selectPrcreateRequestSagaoducts={selectProducts}
+                products={products}
                 onInsert={onInsert}
                 input={input}
                 onChangeInput={onChangeInput}

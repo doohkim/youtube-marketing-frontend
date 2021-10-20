@@ -33,13 +33,26 @@ const productDetailSelect = handleActions(
             }),
         [INSERT]: (state, { payload: product }) =>
             produce(state, (draft) => {
-                draft.selectProducts.push(product);
+                let duplicateItem = false;
+                draft.selectProducts.find((selectedProduct) => {
+                    if (product.text === selectedProduct.text) {
+                        duplicateItem = true;
+                    }
+                });
+                if (duplicateItem) {
+                    draft.selectedProduct = state;
+                    alert('중복');
+                } else {
+                    draft.selectProducts.push(product);
+                }
+
+                // draft.selectProducts.push(product);
             }),
         [REMOVE]: (state, { payload: id }) =>
             produce(state, (draft) => {
-                const index = draft.selectProducts.findIndex(
-                    (product) => product.id === id,
-                );
+                const index = draft.selectProducts.findIndex((product) => {
+                    product.id === id;
+                });
                 draft.selectProducts.splice(index, 1);
             }),
         [INCREASE]: (state, { payload: id }) =>
