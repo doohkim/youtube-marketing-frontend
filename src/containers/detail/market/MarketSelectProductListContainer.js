@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import MarketGoodsInsertComponent from '../../../components/detail/market/MarketGoodsInsertComponent';
 import MarketGoodsSelectedProductListComponent from '../../../components/detail/market/MarketGoodsSelectedProductListComponent';
@@ -21,7 +22,7 @@ const MarketSelectProductListContainerBlock = styled.div`
     height: auto;
 `;
 
-const MarketSelectProductListContainer = ({ products }) => {
+const MarketSelectProductListContainer = ({ products, history }) => {
     const { input, selectProducts } = useSelector(
         ({ productDetailSelect }) => ({
             input: productDetailSelect.input,
@@ -30,10 +31,14 @@ const MarketSelectProductListContainer = ({ products }) => {
     );
     const [onChangeInput, onInsert, onRemove, onDecrease, onIncrease] =
         useActions([changeInput, insert, remove, decrease, increase], []);
+    const onClick = () => {
+        sessionStorage.setItem('cart', JSON.stringify(selectProducts));
+        window.confirm('장바구니 고?');
+        history.push('/cart');
+    };
     return (
         <MarketSelectProductListContainerBlock>
             <MarketGoodsInsertComponent
-                selectPrcreateRequestSagaoducts={selectProducts}
                 products={products}
                 onInsert={onInsert}
                 input={input}
@@ -45,8 +50,9 @@ const MarketSelectProductListContainer = ({ products }) => {
                 onDecrease={onDecrease}
                 onIncrease={onIncrease}
             />
+            <button onClick={onClick}>장바구니 테스트</button>
         </MarketSelectProductListContainerBlock>
     );
 };
 
-export default MarketSelectProductListContainer;
+export default withRouter(MarketSelectProductListContainer);

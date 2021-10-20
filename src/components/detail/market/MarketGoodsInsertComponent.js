@@ -28,7 +28,6 @@ const MarketGoodsInsertComponentWrap = styled.form`
 `;
 
 const MarketGoodsInsertComponent = ({
-    selectProducts,
     input,
     onInsert,
     onChangeInput,
@@ -39,7 +38,7 @@ const MarketGoodsInsertComponent = ({
             onInsert(e.target.value);
             onChangeInput(input);
         },
-        [onChangeInput, selectProducts],
+        [onChangeInput, products],
     );
 
     // div로 select 만드는것 고려
