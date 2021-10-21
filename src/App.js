@@ -6,6 +6,7 @@ import SearchPage from './pages/SearchPage';
 import ChannelPage from './pages/ChannelPage';
 import MarketPage from './pages/MarketPage';
 import OrderPage from './pages/OrderPage';
+import CartPage from './pages/CartPage';
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
             <Route path="/channel" component={ChannelPage} />
             <Route path="/market/:postId" component={MarketPage} />
             <Route path="/order" component={OrderPage} />
+            <Route path="/cart" component={CartPage} />
         </div>
     );
 };

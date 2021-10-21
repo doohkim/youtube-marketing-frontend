@@ -33,8 +33,11 @@ const MarketSelectProductListContainer = ({ products, history }) => {
         useActions([changeInput, insert, remove, decrease, increase], []);
     const onClick = () => {
         sessionStorage.setItem('cart', JSON.stringify(selectProducts));
-        window.confirm('장바구니 고?');
-        history.push('/cart');
+        if (window.confirm('장바구니 고?')) {
+            history.push('/cart');
+        } else {
+            history.push('/search/market');
+        }
     };
     return (
         <MarketSelectProductListContainerBlock>

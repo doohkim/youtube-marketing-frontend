@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import MarketGoodsCartPutComponent from '../../../components/detail/market/MarketGoodsCartPutComponent';
 import MarketGoodsSectionComponent from '../../../components/detail/market/MarketGoodsSectionComponent';
 
 const MarketContractionContainerBlock = styled.div`
@@ -13,7 +12,6 @@ const MarketContractionContainer = () => {
     return (
         <MarketContractionContainerBlock>
             <MarketGoodsSectionComponent />
-            {/* <MarketGoodsCartPutComponent /> */}
         </MarketContractionContainerBlock>
     );
 };

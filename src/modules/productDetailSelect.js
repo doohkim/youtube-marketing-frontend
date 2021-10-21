@@ -7,18 +7,23 @@ const CHANGE_INPUT = 'productDetailSelect/CHANGE_INPUT';
 const INSERT = 'productDetailSelect/INSERT';
 // const TOGGLE = 'productDetailSelect/TOGGLE';
 const REMOVE = 'productDetailSelect/REMOVE';
+const UNLOAD_CART_PRODUCT = 'productDetailSelect/UNLOAD_CART_PRODUCT';
 
 export const increase = createAction(INCREASE);
 export const decrease = createAction(DECREASE);
 export const changeInput = createAction(CHANGE_INPUT, (input) => input);
+
+// 상품 아이디를 만들어야함
 let id = 1;
 export const insert = createAction(INSERT, (text) => ({
     id: id++,
     text,
     number: 1,
 }));
+
 // export const toggle = createAction(TOGGLE, (id) => id);
 export const remove = createAction(REMOVE, (id) => id);
+export const unloadCartProduct = createAction(UNLOAD_CART_PRODUCT);
 
 const initialState = {
     input: '상품 선택',
@@ -73,6 +78,7 @@ const productDetailSelect = handleActions(
                     product.number = product.number - 1;
                 }
             }),
+        [UNLOAD_CART_PRODUCT]: () => initialState,
     },
     initialState,
 );

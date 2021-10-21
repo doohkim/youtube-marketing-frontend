@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import MarketGoodsInfoComponent from '../../../components/detail/market/MarketGoodsInfoComponent';
 import MarketGoodsSectionComponent from '../../../components/detail/market/MarketGoodsSectionComponent';
 import { readPost, unloadPost } from '../../../modules/post';
-// import { product_list } from '../../../utils/market/marketData';
+import { unloadCartProduct } from '../../../modules/productDetailSelect';
 const MarketDetailContainerBlock = styled.div`
     width: 1080px;
     height: auto;
@@ -28,6 +28,7 @@ const MarketDetailContainer = ({ match }) => {
         // 언마운트될 때 리덕스에서 포스트 데이터 없애기
         return () => {
             dispatch(unloadPost());
+            dispatch(unloadCartProduct());
         };
     }, [dispatch, postId]);
     return (
