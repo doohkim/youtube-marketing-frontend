@@ -21,6 +21,8 @@ export const insert = createAction(INSERT, (text) => ({
     number: 1,
 }));
 
+// export const insert = createAction(INSERT, (input) => input);
+
 // export const toggle = createAction(TOGGLE, (id) => id);
 export const remove = createAction(REMOVE, (id) => id);
 export const unloadCartProduct = createAction(UNLOAD_CART_PRODUCT);
@@ -45,8 +47,8 @@ const productDetailSelect = handleActions(
                     }
                 });
                 if (duplicateItem) {
-                    draft.selectedProduct = state;
-                    alert('중복');
+                    draft.selectProducts = state;
+                    // alert('중복');
                 } else {
                     draft.selectProducts.push(product);
                 }

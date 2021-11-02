@@ -35,6 +35,7 @@ const MarketGoodsInsertComponent = ({
 }) => {
     const onChange = useCallback(
         (e) => {
+            console.log(e.target.key);
             onInsert(e.target.value);
             onChangeInput(input);
         },

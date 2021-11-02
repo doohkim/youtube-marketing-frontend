@@ -7,6 +7,8 @@ import ChannelPage from './pages/ChannelPage';
 import MarketPage from './pages/MarketPage';
 import OrderPage from './pages/OrderPage';
 import CartPage from './pages/CartPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 const App = () => {
     return (
@@ -19,6 +21,8 @@ const App = () => {
             <Route path="/market/:postId" component={MarketPage} />
             <Route path="/order" component={OrderPage} />
             <Route path="/cart" component={CartPage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
         </div>
     );
 };

@@ -6,8 +6,10 @@ import channel from './channel';
 import productDetailSelect from './productDetailSelect';
 import posts, { postsSaga } from './posts';
 import post, { postSaga } from './post';
-
+import cart, { cartSaga } from './cart';
 import loading from './loading';
+import auth, { authSaga } from './auth';
+import user, { userSaga } from './user';
 
 const rootReducer = combineReducers({
     channel,
@@ -15,9 +17,12 @@ const rootReducer = combineReducers({
     post,
     posts,
     loading,
+    cart,
+    auth,
+    user,
 });
 export function* rootSaga() {
-    yield all([postsSaga(), postSaga()]);
+    yield all([postsSaga(), postSaga(), cartSaga(), authSaga(), userSaga()]);
 }
 
 export default rootReducer;
