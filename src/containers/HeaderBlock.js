@@ -11,10 +11,10 @@ const HeaderBlockContainer = styled.div`
     border: none;
 `;
 
-const HeaderBlock = ({ user }) => {
+const HeaderBlock = ({ user, onLogout }) => {
     return (
         <HeaderBlockContainer>
-            <TopHeader user={user} />
+            <TopHeader user={user} onLogout={onLogout} />
             <BottomHeader />
         </HeaderBlockContainer>
     );

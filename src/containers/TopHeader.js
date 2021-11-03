@@ -33,7 +33,7 @@ const UserInfo = styled.div`
     font-weight: 800;
     margin-right: 1rem;
 `;
-const TopHeader = ({ user }) => {
+const TopHeader = ({ user, onLogout }) => {
     return (
         <TopHeaderBlock>
             <Link to="/" className="logo">
@@ -43,7 +43,7 @@ const TopHeader = ({ user }) => {
             {user ? (
                 <div className="profile">
                     <UserInfo>{user.username}</UserInfo>
-                    <Button>로그아웃</Button>
+                    <Button onClick={onLogout}>로그아웃</Button>
                 </div>
             ) : (
                 <div className="profile">
