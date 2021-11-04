@@ -50,7 +50,7 @@ const GoodsItemBlock = styled.div`
 `;
 
 const GoodsItem = ({ post }) => {
-    const { id, title, post_images, products } = post;
+    const { id, title, post_images, products, min_price } = post;
     return (
         <GoodsItemBlock>
             {/* <div className="thumb"> */}
@@ -60,7 +60,7 @@ const GoodsItem = ({ post }) => {
             {/* </div> */}
             <Link className="info" to={`/market/${id}`}>
                 <span className="product-title">{title}</span>
-                <span className="price">9,980원</span>
+                <span className="price">{min_price}원</span>
             </Link>
         </GoodsItemBlock>
     );

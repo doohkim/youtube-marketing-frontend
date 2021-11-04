@@ -9,7 +9,7 @@ const VideoListContainerWrap = styled.div`
     /* height: 1016px; */
     display: flex;
     flex-wrap: wrap;
-    background: gray;
+    /* background: gray; */
 `;
 
 const VideoListContainer = () => {

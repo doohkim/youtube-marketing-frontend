@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ListSortMenuComponent from './ListSortMenuComponent';
-import InnerGoodsListComponent from './InnerGoodsListComponent';
 import GoodsItem from './GoodsItem';
 const GoodListComponentBlock = styled.div`
     width: 1080px;

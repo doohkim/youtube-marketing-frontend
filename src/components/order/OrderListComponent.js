@@ -1,22 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MdRemoveCircleOutline } from 'react-icons/md';
 
-const CartListComponentBlock = styled.form`
+const OrderListComponentBlock = styled.form`
     width: 1080px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
 `;
-const ListErrorBlock = styled.div`
+
+const OrderListErrorBlock = styled.div`
     width: 1080px;
     background: gray;
 `;
-
-const CartItemBlock = styled.div`
+const OrderItemBlock = styled.div`
     padding-top: 3rem;
     padding-bottom: 3rem;
-    width: 742px;
+    width: 1080px;
     display: flex;
     /* 맨 위 포스트는 padding-top 없음 */
     &:first-child {
@@ -62,12 +61,11 @@ const CartItemBlock = styled.div`
         }
     }
 `;
-
-const CartItem = ({ cartItem, onIncrease, onDecrease, onRemove }) => {
-    const { number, text, id } = cartItem;
+const OrderItem = ({ OrderItem }) => {
+    const { number, text, id } = OrderItem;
     const price = 2900;
     return (
-        <CartItemBlock>
+        <OrderItemBlock>
             <div className="img_wrap">
                 <img src="https://img-cf.kurly.com/shop/data/goods/1580273855720i0.jpg" />
             </div>
@@ -75,34 +73,28 @@ const CartItem = ({ cartItem, onIncrease, onDecrease, onRemove }) => {
             <div className="product_info_wrap">
                 <div className="product_name">{text}</div>
                 <div className="counter_wrap">
-                    <button onClick={() => onIncrease(id)}>+</button>
-                    <div className="number">{number}</div>
-                    <button onClick={() => onDecrease(id)}>-</button>
+                    <div className="number">{number} 개</div>
                 </div>
-                <div className="price">{price}원</div>
-                <div className="remove" onClick={() => onRemove(id)}>
-                    <MdRemoveCircleOutline />
-                </div>
+                <div className="price">{price} 원</div>
             </div>
-        </CartItemBlock>
+        </OrderItemBlock>
     );
 };
-
-const CartListComponent = ({ cartData, cartError, loading }) => {
+const OrderListComponent = ({ cartData, cartError, loading }) => {
     if (cartError) {
-        return <ListErrorBlock>에러가 발생했습니다.</ListErrorBlock>;
+        return <OrderListErrorBlock>에러가 발생했습니다.</OrderListErrorBlock>;
     }
     return (
-        <CartListComponentBlock>
+        <OrderListComponentBlock>
             {!loading && cartData && (
                 <div className="cart_item">
                     {cartData.map((cart) => (
-                        <CartItem cartItem={cart} key={cart.id} />
+                        <OrderItem OrderItem={cart} key={cart.id} />
                     ))}
                 </div>
             )}
-        </CartListComponentBlock>
+        </OrderListComponentBlock>
     );
 };
 
-export default CartListComponent;
+export default OrderListComponent;

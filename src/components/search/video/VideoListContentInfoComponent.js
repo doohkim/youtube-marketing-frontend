@@ -6,7 +6,7 @@ const VideoListContentInfoComponentWrap = styled.div`
     height: 50px;
     display: flex;
     .profileThumbnail {
-        background: gray;
+        /* background: gray; */
     }
 
     .profileInfo {

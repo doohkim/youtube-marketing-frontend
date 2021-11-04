@@ -13,13 +13,26 @@ import {
     increase,
 } from '../../../modules/productDetailSelect';
 const MarketSelectProductListContainerBlock = styled.div`
-    font-family: noto sans;
+    /* font-family: noto sans; */
     min-height: 0px;
     max-height: 150px;
     color: #333;
     letter-spacing: 0;
     width: 560px;
     height: auto;
+    .cartPut {
+        background: #8b00ff;
+        display: block;
+        font-size: 16px;
+        line-height: 52px;
+        letter-spacing: -0.1px;
+        text-align: center;
+        width: 560px;
+        height: 56px;
+        color: white;
+        padding-bottom: 2px;
+        margin-top: 1.5rem;
+    }
 `;
 
 const MarketSelectProductListContainer = ({ products, history }) => {
@@ -53,7 +66,9 @@ const MarketSelectProductListContainer = ({ products, history }) => {
                 onDecrease={onDecrease}
                 onIncrease={onIncrease}
             />
-            <button onClick={onClick}>장바구니 테스트</button>
+            <button className="cartPut" onClick={onClick}>
+                장바구니 담기
+            </button>
         </MarketSelectProductListContainerBlock>
     );
 };
