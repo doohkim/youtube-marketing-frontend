@@ -31,7 +31,6 @@ const CartContainer = () => {
     useEffect(() => {
         dispatch(getCart());
     }, [dispatch]);
-    console.log(cart);
     return (
         <CartContainerBlock>
             <div className="tit_page">

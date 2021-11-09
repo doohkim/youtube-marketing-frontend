@@ -14,10 +14,17 @@ export const decrease = createAction(DECREASE);
 export const changeInput = createAction(CHANGE_INPUT, (input) => input);
 
 // 상품 아이디를 만들어야함
-let id = 1;
-export const insert = createAction(INSERT, (text) => ({
-    id: id++,
-    text,
+// let id = 1;
+// export const insert = createAction(INSERT, (text) => ({
+//     id: id++,
+//     text,
+//     number: 1,
+// }));
+export const insert = createAction(INSERT, (id, text, price) => ({
+    id: id,
+    // id,
+    text: text,
+    price: price,
     number: 1,
 }));
 
@@ -47,8 +54,8 @@ const productDetailSelect = handleActions(
                     }
                 });
                 if (duplicateItem) {
-                    draft.selectProducts = state;
-                    // alert('중복');
+                    draft.selectProducts = state.selectProducts;
+                    alert('중복');
                 } else {
                     draft.selectProducts.push(product);
                 }

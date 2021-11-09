@@ -35,11 +35,15 @@ const MarketGoodsInsertComponent = ({
 }) => {
     const onChange = useCallback(
         (e) => {
-            console.log(e.target.key);
-            onInsert(e.target.value);
+            const found = products.find(
+                (product) => product.name === e.target.value,
+            );
+            const { id, name, price } = found;
+            // console.log('aaa', found);
+            onInsert(id, name, price);
             onChangeInput(input);
         },
-        [onChangeInput, products],
+        [onChangeInput],
     );
 
     // div로 select 만드는것 고려

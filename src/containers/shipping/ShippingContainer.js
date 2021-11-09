@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import DaumPostcode from '../../../node_modules/react-daum-postcode/lib/DaumPostcode';
 import Button from '../../components/common/Button';
+import Modal from '../../components/common/Modal';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 const ShippingContainerWrap = styled.div`
     width: 284px;
@@ -27,6 +30,10 @@ const ShippingContainerWrap = styled.div`
         }
         .emph {
             color: #5f0080;
+        }
+        .close_btn {
+            float: right;
+            margin-bottom: 0.5rem;
         }
     }
     button {
@@ -85,15 +92,101 @@ const ShippingContainerWrap = styled.div`
 `;
 
 const ShippingContainer = () => {
+    const [isOpenPopup, setIsOpenPopup] = useState(false);
+    const [isOpenSecondPopup, setIsOpenSecondPopup] = useState(false);
+    const [address, setAddress] = useState(null);
+    const [postCodes, setPostCodes] = useState(null);
+    const [detailAddress, setDetailAddress] = useState('');
+
+    const handleComplete = useCallback(
+        (data) => {
+            let fullAddress = data.address;
+            let extraAddress = '';
+            let zoneCodes = data.zonecode;
+            if (data.addressType === 'R') {
+                if (data.bname !== '') {
+                    extraAddress += data.bname;
+                }
+                if (data.buildingName !== '') {
+                    extraAddress +=
+                        extraAddress !== ''
+                            ? `, ${data.buildingName}`
+                            : data.buildingName;
+                }
+                fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+            }
+            //fullAddress -> 전체 주소반환
+            setAddress(fullAddress);
+            setPostCodes(zoneCodes);
+            setIsOpenSecondPopup(true);
+        },
+        [address, postCodes, isOpenSecondPopup],
+    );
+    const openPopup = useCallback(() => {
+        setIsOpenPopup(true);
+    }, [isOpenPopup]);
+
+    const closePopup = useCallback(() => {
+        setIsOpenPopup(false);
+    }, [isOpenPopup]);
+
+    const onChange = useCallback(
+        (e) => {
+            setDetailAddress(e.target.value);
+        },
+        [detailAddress],
+    );
+
+    const onClick = useCallback(
+        (e) => {
+            e.preventDefault();
+            setAddress(address, detailAddress);
+            setIsOpenSecondPopup(false);
+            closePopup(false);
+        },
+        [isOpenSecondPopup, closePopup, address, detailAddress, setAddress],
+    );
+
     return (
         <ShippingContainerWrap>
             <div className="address">
                 <h3 className="text">배송지</h3>
-                <div className="text">
-                    <span className="emph">배송지 입력을하고</span> <br />
-                    배송유형을 확인해 보세요!
-                </div>
-                <button>주소검색</button>
+                {address ? (
+                    <div className="text">{address + detailAddress}</div>
+                ) : (
+                    <div className="text">
+                        <span className="emph">배송지 입력을하고</span> <br />
+                        배송유형을 확인해 보세요!
+                    </div>
+                )}
+                {address ? (
+                    <button onClick={openPopup}>배송지 변경</button>
+                ) : (
+                    <button onClick={openPopup}>주소검색</button>
+                )}
+                {isOpenPopup && (
+                    <Modal visible={true}>
+                        <div className="close_btn">
+                            <AiOutlineCloseCircle onClick={closePopup} />
+                        </div>
+                        <DaumPostcode
+                            onComplete={handleComplete}
+                            className="post-code"
+                            // autoClose
+                        />
+                        {isOpenSecondPopup && (
+                            <div>
+                                <h3>상세 주소 입력</h3>
+                                <input
+                                    placeholder="상세 주소를 입력해 주세요"
+                                    onChange={onChange}
+                                    value={detailAddress}
+                                />
+                                <button onClick={onClick}>저장</button>
+                            </div>
+                        )}
+                    </Modal>
+                )}
             </div>
             <div className="total_price_info">
                 <dl className="amount">

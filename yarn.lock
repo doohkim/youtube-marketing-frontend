@@ -7468,6 +7468,14 @@ react-chartjs-2@^2.9.4:
     lodash "^4.17.19"
     prop-types "^15.7.2"
 
+react-daum-postcode@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-daum-postcode/-/react-daum-postcode-3.0.0.tgz#b5b0105468e141553e09155f11f444c4fcc7dd06"
+  integrity sha512-G+C6OQNqyMjrACkhUi2SoOBAQtbfowDlCjxo/KQ4Chvv2uIwQQ1MLH8UfRbL00GqbaH0zpANnw0CIM8TEtVaxA==
+  dependencies:
+    prop-types "^15.7.2"
+    react "^17.0.2"
+
 react-dev-utils@^5.0.2:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-5.0.3.tgz#92f97668f03deb09d7fa11ea288832a8c756e35e"
