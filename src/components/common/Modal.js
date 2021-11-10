@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import Portal from './Portal';
+import { GrClose } from 'react-icons/gr';
 
 const ModalWrapper = styled.div`
     box-sizing: border-box;
@@ -38,18 +40,65 @@ const ModalInner = styled.div`
     transform: translateY(-50%);
     margin: 0 auto;
     padding: 40px 20px;
+    .close-btn {
+        float: right;
+        width: 25px;
+        height: 25px;
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    }
 `;
 
-const Modal = ({ className, visible, children }) => {
+const Modal = ({
+    className,
+    onClose,
+    maskClosable,
+    closable,
+    visible,
+    children,
+}) => {
+    const onMaskClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onClose(e);
+        }
+    };
+
+    const close = (e) => {
+        if (onClose) {
+            onClose(e);
+        }
+    };
+
+    useEffect(() => {
+        document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`;
+        return () => {
+            const scrollY = document.body.style.top;
+            document.body.style.cssText = `position: ""; top: "";`;
+            window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+            // window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        };
+    }, []);
     return (
-        <div>
+        <Portal elementId="modal-root">
             <ModalOverlay visible={visible} />
-            <ModalWrapper className={className} tabIndex="-1" visible={visible}>
+            <ModalWrapper
+                onClick={maskClosable ? onMaskClick : null}
+                className={className}
+                tabIndex="-1"
+                visible={visible}
+            >
                 <ModalInner tabIndex="0" className="modal-inner">
+                    <div className="close-btn">
+                        {closable && (
+                            <GrClose className="modal-close" onClick={close} />
+                        )}
+                    </div>
                     {children}
                 </ModalInner>
             </ModalWrapper>
-        </div>
+        </Portal>
     );
 };
 

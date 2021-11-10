@@ -6,26 +6,15 @@ const GoodsItemBlock = styled.div`
     width: 338px;
     height: 576px;
     cursor: pointer;
-    /* display: block; */
 
-    /* background: green; */
-    /* .thumb { */
-    /* display: block;
-        position: relative; */
-    /* width: 338px;
-        height: 435px;
-        background-color: #f9f8f9; */
-    /* padding: 10px; */
     Link {
         width: 338px;
         height: 435px;
     }
     img {
         max-width: 338px;
-        /* height: auto; */
         height: 435px;
     }
-    /* } */
     .info {
         display: flex;
         flex-direction: column;
@@ -53,11 +42,9 @@ const GoodsItem = ({ post }) => {
     const { id, title, post_images, products, min_price } = post;
     return (
         <GoodsItemBlock>
-            {/* <div className="thumb"> */}
             <Link to={`/market/${id}`}>
-                <img src={post_images[0]} />
+                <img src={post_images[0]} alt="" />
             </Link>
-            {/* </div> */}
             <Link className="info" to={`/market/${id}`}>
                 <span className="product-title">{title}</span>
                 <span className="price">{min_price}원</span>

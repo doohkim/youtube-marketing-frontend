@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineComment } from 'react-icons/ai';
 import { IoIosShareAlt, IoIosThumbsUp, IoIosThumbsDown } from 'react-icons/io';
@@ -82,17 +82,16 @@ const DetailVideoInfoWrap = styled.div`
 `;
 
 const DetailVideoInfoComponent = () => {
-    const contentRef = useRef(null);
-    const [isShowReadMore, setIsShowReadMore] = useState(false);
-    const data =
-        '적당한 모바일 화면에서는 잘 되는 것 같지만, 반응형 대응이 잘 안되어 마음에 썩 들지 않았다.\
-    화면이 큰 모바일의 경우 텍스트들이 한줄이 되는데도 불구하고 더보기 버튼이 생성되게 되는데, 이런 경우에는 더보기 버튼은 없어지고 내용이 다 보여야 한다고 생각했다.\
-    사용할만한 상황: 텍스트 줄 수에 크게 상관이 없고, 적당히 텍스트의 글이 보일 만큼 보이고 더보기로 가려놓길 바란다면 사용하기 좋을 것 같다.\
-    근데 이게 디자인과 가장 비슷하게 나온다..(예고)';
-    const onClick = (e) => {
-        contentRef.current.classList.add('show');
-        e.currentTarget.classList.add('hide');
-    };
+    // const contentRef = useRef(null);
+    // const [isShowReadMore, setIsShowReadMore] = useState(false);
+    const data = `적당한 모바일 화면에서는 잘 되는 것 같지만, 반응형 대응이 잘 안되어 마음에 썩 들지 않았다.
+    화면이 큰 모바일의 경우 텍스트들이 한줄이 되는데도 불구하고 더보기 버튼이 생성되게 되는데, 이런 경우에는 더보기 버튼은 없어지고 내용이 다 보여야 한다고 생각했다.
+    사용할만한 상황: 텍스트 줄 수에 크게 상관이 없고, 적당히 텍스트의 글이 보일 만큼 보이고 더보기로 가려놓길 바란다면 사용하기 좋을 것 같다.
+    근데 이게 디자인과 가장 비슷하게 나온다..(예고)`;
+    // const onClick = (e) => {
+    //     contentRef.current.classList.add('show');
+    //     e.currentTarget.classList.add('hide');
+    // };
     const [limit, setLimit] = useState(50);
     const toggleEllipsis = (str, limit) => {
         return {

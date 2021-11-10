@@ -37,7 +37,9 @@ const MarketGoodsTipItemWrap = styled.div`
 const MarketGoodsTipItem = ({ tip }) => {
     return (
         <MarketGoodsTipItemWrap>
-            <div className="pic">{tip.image && <img src={tip.image} />}</div>
+            <div className="pic">
+                {tip.image && <img src={tip.image} alt="" />}
+            </div>
             <div className="word">
                 <strong className="subTitle">{tip.title}</strong>
                 <div>

@@ -1,10 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import DaumPostcode from '../../../node_modules/react-daum-postcode/lib/DaumPostcode';
+import DaumPostcode from 'react-daum-postcode';
 import Button from '../../components/common/Button';
 import Modal from '../../components/common/Modal';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 const ShippingContainerWrap = styled.div`
     width: 284px;
@@ -92,7 +91,8 @@ const ShippingContainerWrap = styled.div`
 `;
 
 const ShippingContainer = () => {
-    const [isOpenPopup, setIsOpenPopup] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+
     const [isOpenSecondPopup, setIsOpenSecondPopup] = useState(false);
     const [address, setAddress] = useState(null);
     const [postCodes, setPostCodes] = useState(null);
@@ -122,13 +122,13 @@ const ShippingContainer = () => {
         },
         [address, postCodes, isOpenSecondPopup],
     );
-    const openPopup = useCallback(() => {
-        setIsOpenPopup(true);
-    }, [isOpenPopup]);
 
-    const closePopup = useCallback(() => {
-        setIsOpenPopup(false);
-    }, [isOpenPopup]);
+    const openModal = useCallback(() => {
+        setModalVisible(true);
+    }, []);
+    const closeModal = useCallback(() => {
+        setModalVisible(false);
+    }, []);
 
     const onChange = useCallback(
         (e) => {
@@ -140,11 +140,11 @@ const ShippingContainer = () => {
     const onClick = useCallback(
         (e) => {
             e.preventDefault();
-            setAddress(address, detailAddress);
+            setAddress(address + detailAddress);
             setIsOpenSecondPopup(false);
-            closePopup(false);
+            closeModal(false);
         },
-        [isOpenSecondPopup, closePopup, address, detailAddress, setAddress],
+        [closeModal, address, detailAddress, setAddress],
     );
 
     return (
@@ -152,7 +152,7 @@ const ShippingContainer = () => {
             <div className="address">
                 <h3 className="text">배송지</h3>
                 {address ? (
-                    <div className="text">{address + detailAddress}</div>
+                    <div className="text">{address}</div>
                 ) : (
                     <div className="text">
                         <span className="emph">배송지 입력을하고</span> <br />
@@ -160,15 +160,17 @@ const ShippingContainer = () => {
                     </div>
                 )}
                 {address ? (
-                    <button onClick={openPopup}>배송지 변경</button>
+                    <button onClick={openModal}>배송지 변경</button>
                 ) : (
-                    <button onClick={openPopup}>주소검색</button>
+                    <button onClick={openModal}>주소검색</button>
                 )}
-                {isOpenPopup && (
-                    <Modal visible={true}>
-                        <div className="close_btn">
-                            <AiOutlineCloseCircle onClick={closePopup} />
-                        </div>
+                {modalVisible && (
+                    <Modal
+                        visible={modalVisible}
+                        closable={true}
+                        maskClosable={true}
+                        onClose={closeModal}
+                    >
                         <DaumPostcode
                             onComplete={handleComplete}
                             className="post-code"

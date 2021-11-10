@@ -137,6 +137,7 @@ const MarketGoodsSectionComponent = ({ post, loading, postError }) => {
                                 'youtube-market-front.s3.amazonaws.com/https%3A/',
                                 '',
                             )}
+                            alt=""
                         />
                     </div>
 

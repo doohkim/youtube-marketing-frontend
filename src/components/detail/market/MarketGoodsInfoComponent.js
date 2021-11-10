@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import MarketGoodsIntroComponent from './info/MarketGoodsIntroComponent';
 import MarketGoodsPickComponent from './info/MarketGoodsPickComponent';
-import MarketGoodsPointComponent from './info/MarketGoodsPointComponent';
 import MarketGoodsTipComponent from './info/MarketGoodsTipComponent';
 
 const MarketGoodsInfoComponentBlock = styled.div`

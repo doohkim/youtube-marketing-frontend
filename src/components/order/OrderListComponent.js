@@ -67,7 +67,10 @@ const OrderItem = ({ OrderItem }) => {
     return (
         <OrderItemBlock>
             <div className="img_wrap">
-                <img src="https://img-cf.kurly.com/shop/data/goods/1580273855720i0.jpg" />
+                <img
+                    src="https://img-cf.kurly.com/shop/data/goods/1580273855720i0.jpg"
+                    alt=""
+                />
             </div>
 
             <div className="product_info_wrap">

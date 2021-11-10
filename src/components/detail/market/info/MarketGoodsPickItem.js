@@ -40,7 +40,7 @@ const MarketGoodsPickItem = ({ product }) => {
     return (
         <MarketGoodsPickItemWrap>
             <div className="pic">
-                {product_images && <img src={product_images[0]} />}
+                {product_images && <img src={product_images[0]} alt="" />}
             </div>
             <div className="word">
                 <strong className="subTitle">

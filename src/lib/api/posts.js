@@ -1,4 +1,3 @@
-import qs from 'qs';
 import client from './client';
 
 export const writePost = ({ title, notification, packing_type }) =>
