@@ -15,7 +15,7 @@ export const tempSetUser = createAction(TEMP_SET_USER, (user) => user);
 export const check = createAction(CHECK);
 export const logout = createAction(LOGOUT);
 
-const checkSaga = createRequestSaga(CHECK, authAPI.check);
+const checkSaga = createRequestSaga(CHECK, authAPI.getToken);
 
 function checkFailureSaga() {
     try {
@@ -28,6 +28,7 @@ function* logoutSaga() {
     try {
         yield call(authAPI.logout); // logout API 호출
         localStorage.removeItem('user'); // localStorage에서 user를 제거
+        localStorage.removeItem('token'); // localStorage에서 user를 제거
     } catch (e) {
         console.log(e);
     }

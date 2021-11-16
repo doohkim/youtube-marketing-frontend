@@ -4,5 +4,5 @@ import client from './client';
 //     client.post('/posts/', { title, notification, packing_type });
 
 export const readPost = (id) => {
-    return client.get(`http://127.0.0.1:8000/posts/detail/${id}/`);
+    return client.get(`/posts/detail/${id}/`);
 };

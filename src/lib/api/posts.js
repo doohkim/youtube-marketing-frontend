@@ -5,5 +5,5 @@ export const writePost = ({ title, notification, packing_type }) =>
     client.post('/posts/', { title, notification, packing_type });
 
 export const getListPosts = () => {
-    return client.get(`http://127.0.0.1:8000/posts/`);
+    return client.get(`/posts/`);
 };
