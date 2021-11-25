@@ -39,9 +39,12 @@ const GoodListComponent = ({ posts, postsError, loading }) => {
             </InnerGoodsListComponentBlock>
         );
     }
+    if (loading || !posts) {
+        return null;
+    }
     return (
         <GoodListComponentBlock>
-            <ListSortMenuComponent />
+            <ListSortMenuComponent counts={posts.count} />
             <InnerGoodsListComponentBlock>
                 <ul className="list">
                     {!loading &&

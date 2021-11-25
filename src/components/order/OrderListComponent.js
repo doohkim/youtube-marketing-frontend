@@ -83,15 +83,15 @@ const OrderItem = ({ OrderItem }) => {
         </OrderItemBlock>
     );
 };
-const OrderListComponent = ({ cartData, cartError, loading }) => {
-    if (cartError) {
+const OrderListComponent = ({ order, orderError, loading }) => {
+    if (orderError) {
         return <OrderListErrorBlock>에러가 발생했습니다.</OrderListErrorBlock>;
     }
     return (
         <OrderListComponentBlock>
-            {!loading && cartData && (
+            {!loading && order && (
                 <div className="cart_item">
-                    {cartData.map((cart) => (
+                    {order.map((cart) => (
                         <OrderItem OrderItem={cart} key={cart.id} />
                     ))}
                 </div>

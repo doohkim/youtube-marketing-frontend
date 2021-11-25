@@ -16,7 +16,12 @@ export const getToken = () =>
             Authorization: `Token ${sessionStorage.getItem('token')}`,
         },
     });
-export const logout = () => client.post('/members/logout/');
+export const logout = () =>
+    client.get('/members/logout/', {
+        headers: {
+            Authorization: `Token ${sessionStorage.getItem('token')}`,
+        },
+    });
 
 // export const login = ({ username, password }) =>
 //     client.post('/api/post/login/', { username, password });

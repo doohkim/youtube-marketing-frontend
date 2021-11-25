@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import OrderListComponent from '../../components/order/OrderListComponent';
-import { getCart } from '../../modules/cart';
+import { withRouter } from 'react-router-dom';
+import { getCartFilter } from '../../modules/order';
 
 const OrderContainerBlock = styled.div`
     width: 1080px;
@@ -94,17 +95,28 @@ const OrderContainerBlock = styled.div`
     }
 `;
 
-const OrderContainer = () => {
+const OrderContainer = ({ history }) => {
+    const [address, setAddress] = useState(null);
     const dispatch = useDispatch();
     // 로그인 되어있어야만 주문이 가능하도록 하기
-    const { cart, cartError, loading } = useSelector(({ cart, loading }) => ({
-        cart: cart.cart,
-        cartError: cart.cartError,
-        loading: loading['cart/GET_CART'],
-    }));
+    const { order, orderError, loading, user } = useSelector(
+        ({ order, loading, user }) => ({
+            order: order.order,
+            orderError: order.orderError,
+            loading: loading['order/GET_CART_FILTER'],
+            user: user.user,
+        }),
+    );
+
     useEffect(() => {
-        dispatch(getCart());
-    }, [dispatch]);
+        if (user) {
+            dispatch(getCartFilter());
+            setAddress(user.user.user_addresses[0].address);
+        } else {
+            setAddress(null);
+            history.push('/login');
+        }
+    }, [dispatch, user]);
     return (
         <OrderContainerBlock>
             <div className="tit_page">
@@ -113,25 +125,28 @@ const OrderContainer = () => {
             <div className="content">
                 <div className="order_product_list">
                     <div className="sub_tit">주문 상품</div>
+
                     <OrderListComponent
-                        cartData={JSON.parse(cart)}
-                        cartError={cartError}
+                        order={order}
+                        orderError={orderError}
                         loading={loading}
                     />
                 </div>
                 <div className="order_user_info">
                     <div className="sub_tit">주문자 정보</div>
                     <table className="userinfo_table">
-                        <tbody>
-                            <tr class="fst">
-                                <th>보내는 분</th>
-                                <td>김도오</td>
-                                <th>휴대폰</th>
-                                <td>01040116804</td>
-                                <th>이메일</th>
-                                <td>paygodeveloper@gmail.com</td>
-                            </tr>
-                        </tbody>
+                        {!loading && user && (
+                            <tbody>
+                                <tr className="fst">
+                                    <th>보내는 분</th>
+                                    <td>{user.user.username}</td>
+                                    <th>휴대폰</th>
+                                    <td>{user.user.phonenumber}</td>
+                                    <th>이메일</th>
+                                    <td>{user.user.email}</td>
+                                </tr>
+                            </tbody>
+                        )}
                     </table>
                 </div>
                 <div className="shipping_user_info">
@@ -139,7 +154,9 @@ const OrderContainer = () => {
                     <dl className="amount">
                         <dt className="tit">배송비</dt>
                         <dd className="price">
-                            <span className="num">경기도 광명시 광삼로 27</span>
+                            {!loading && user && (
+                                <span className="num">{address}</span>
+                            )}
                         </dd>
                     </dl>
                 </div>
@@ -148,4 +165,4 @@ const OrderContainer = () => {
     );
 };
 
-export default OrderContainer;
+export default withRouter(OrderContainer);

@@ -13,6 +13,7 @@ const LOGOUT = 'user/LOGOUT';
 
 export const tempSetUser = createAction(TEMP_SET_USER, (user) => user);
 export const check = createAction(CHECK);
+// 로그아웃 api 받아와서 성공하는것 구현하기
 export const logout = createAction(LOGOUT);
 
 const checkSaga = createRequestSaga(CHECK, authAPI.getToken);
@@ -27,8 +28,9 @@ function checkFailureSaga() {
 function* logoutSaga() {
     try {
         yield call(authAPI.logout); // logout API 호출
-        localStorage.removeItem('user'); // localStorage에서 user를 제거
-        localStorage.removeItem('token'); // localStorage에서 user를 제거
+        sessionStorage.removeItem('user'); // localStorage에서 user를 제거
+        sessionStorage.removeItem('token'); // localStorage에서 user를 제거
+        window.location.go();
     } catch (e) {
         console.log(e);
     }

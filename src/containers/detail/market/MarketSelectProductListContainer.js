@@ -51,7 +51,6 @@ const MarketSelectProductListContainer = ({ products, history }) => {
         let cart_db = [];
         let new_cart = [];
         let overlap_list = [];
-        console.log('세션저장소 불러온 데이터', cartList);
 
         if (cartList.length >= 0 && selectProducts.length === 0) {
             console.log('카트 변경 없음');
@@ -107,7 +106,7 @@ const MarketSelectProductListContainer = ({ products, history }) => {
         new_cart = [];
         overlap_list = [];
         if (window.confirm('장바구니 고?')) {
-            history.push('/cart');
+            history.push('/list');
         } else {
             history.push(`/search/market/`);
         }

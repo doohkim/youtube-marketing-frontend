@@ -74,18 +74,19 @@ const RegisterForm = ({ history }) => {
         if (auth) {
             console.log('회원가입 성공');
             console.log(auth);
+            sessionStorage.setItem('token', auth.token);
             dispatch(check());
         }
     }, [auth, authError, dispatch]);
     // user 값이 잘 설정되었는지 확인
     useEffect(() => {
         if (user) {
-            history.push('/'); // 홈 화면으로 이동
             try {
                 localStorage.setItem('user', JSON.stringify(user));
             } catch (e) {
                 console.log('localStorage is not working');
             }
+            history.push('/'); // 홈 화면으로 이동
         }
     }, [history, user]);
     return (

@@ -13,22 +13,13 @@ export const increase = createAction(INCREASE);
 export const decrease = createAction(DECREASE);
 export const changeInput = createAction(CHANGE_INPUT, (input) => input);
 
-// 상품 아이디를 만들어야함
-// let id = 1;
-// export const insert = createAction(INSERT, (text) => ({
-//     id: id++,
-//     text,
-//     number: 1,
-// }));
 export const insert = createAction(INSERT, (id, text, price) => ({
     id: id,
-    // id,
     text: text,
     price: price,
     number: 1,
+    checked: false,
 }));
-
-// export const insert = createAction(INSERT, (input) => input);
 
 // export const toggle = createAction(TOGGLE, (id) => id);
 export const remove = createAction(REMOVE, (id) => id);
@@ -49,7 +40,7 @@ const productDetailSelect = handleActions(
             produce(state, (draft) => {
                 let duplicateItem = false;
                 draft.selectProducts.find((selectedProduct) => {
-                    if (product.text === selectedProduct.text) {
+                    if (product.id === selectedProduct.id) {
                         duplicateItem = true;
                     }
                 });

@@ -1,13 +1,16 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import DaumPostcode from 'react-daum-postcode';
 import Button from '../../components/common/Button';
 import Modal from '../../components/common/Modal';
+import palette from '../../lib/styles/palette';
 
 const ShippingContainerWrap = styled.div`
     width: 284px;
     height: 553px;
+    border: 1px solid ${palette.gray[2]};
+    margin-left: 0.5rem;
 
     .address {
         width: 244px;
@@ -90,9 +93,9 @@ const ShippingContainerWrap = styled.div`
     }
 `;
 
-const ShippingContainer = () => {
+const ShippingContainer = ({ cartData, loading, user }) => {
+    const [selectedCartItems, setSelectedCartItems] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
-
     const [isOpenSecondPopup, setIsOpenSecondPopup] = useState(false);
     const [address, setAddress] = useState(null);
     const [postCodes, setPostCodes] = useState(null);
@@ -146,23 +149,45 @@ const ShippingContainer = () => {
         },
         [closeModal, address, detailAddress, setAddress],
     );
+    const getTotalAmount = (numbers) => {
+        if (numbers.length === 0) return 0;
+        const sum = numbers.reduce((acc, cur, i) => {
+            return acc + cur.price * cur.number;
+        }, 0);
+        return sum;
+    };
 
+    useEffect(() => {
+        if (user) {
+            setAddress(user.user.user_addresses[0].address);
+        } else {
+            setAddress(null);
+        }
+        if (cartData) {
+            setSelectedCartItems(
+                cartData.filter((cart_item) => cart_item.checked === true),
+            );
+        }
+    }, [user, cartData]);
     return (
         <ShippingContainerWrap>
             <div className="address">
                 <h3 className="text">배송지</h3>
+
                 {address ? (
-                    <div className="text">{address}</div>
-                ) : (
-                    <div className="text">
-                        <span className="emph">배송지 입력을하고</span> <br />
-                        배송유형을 확인해 보세요!
+                    <div>
+                        <div className="text">{address}</div>
+                        <button onClick={openModal}>배송지 변경</button>
                     </div>
-                )}
-                {address ? (
-                    <button onClick={openModal}>배송지 변경</button>
                 ) : (
-                    <button onClick={openModal}>주소검색</button>
+                    <div>
+                        <div className="text">
+                            <span className="emph">배송지 입력을하고</span>{' '}
+                            <br />
+                            배송유형을 확인해 보세요!
+                        </div>
+                        <button onClick={openModal}>주소검색</button>
+                    </div>
                 )}
                 {modalVisible && (
                     <Modal
@@ -194,7 +219,14 @@ const ShippingContainer = () => {
                 <dl className="amount">
                     <dt className="tit">상품 금액</dt>
                     <dd className="price">
-                        <span className="num">77,920</span>
+                        {!loading && selectedCartItems ? (
+                            <span className="num">
+                                {getTotalAmount(selectedCartItems)}
+                            </span>
+                        ) : (
+                            <span className="num">{0}</span>
+                        )}
+
                         <span className="won">원</span>
                     </dd>
                 </dl>
@@ -208,7 +240,13 @@ const ShippingContainer = () => {
                 <dl className="amount lst">
                     <dt className="tit">결제예정금액</dt>
                     <dd className="price">
-                        <span className="num">80,920</span>
+                        {!loading && selectedCartItems ? (
+                            <span className="num">
+                                {getTotalAmount(selectedCartItems) + 3000}
+                            </span>
+                        ) : (
+                            <span className="num">{3000}</span>
+                        )}
                         <span className="won">원</span>
                     </dd>
                 </dl>

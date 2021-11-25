@@ -34,6 +34,10 @@ const MarketGoodsInfoComponent = ({ post, postError, loading }) => {
             </MarketGoodsInfoComponentBlock>
         );
     }
+
+    if (loading || !post) {
+        return null;
+    }
     return (
         <MarketGoodsInfoComponentBlock>
             {!loading && post && (

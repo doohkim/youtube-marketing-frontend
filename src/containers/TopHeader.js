@@ -24,13 +24,13 @@ const TopHeaderBlock = styled.div`
     .profile {
         display: flex;
         align-items: center; // 세로 중앙 정렬
-        width: 150px;
+        width: 200px;
         height: 48px;
         font-size: 1.25rem;
     }
 `;
 const UserInfo = styled.div`
-    font-weight: 800;
+    font-weight: 700;
     margin-right: 1rem;
 `;
 const TopHeader = ({ user, onLogout }) => {
@@ -42,7 +42,7 @@ const TopHeader = ({ user, onLogout }) => {
             <HeaderSearch />
             {user ? (
                 <div className="profile">
-                    <UserInfo>{user.username}</UserInfo>
+                    <UserInfo>{user.user.username}</UserInfo>
                     <Button onClick={onLogout}>로그아웃</Button>
                 </div>
             ) : (

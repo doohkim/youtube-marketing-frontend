@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchSubscriberContainer from '../containers/search/subscriber/SearchSubscriberContainer';
-
 const categories = [
     {
         name: 'channelRank',

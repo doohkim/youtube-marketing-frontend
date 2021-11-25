@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MdRemoveCircleOutline } from 'react-icons/md';
+import { GrStatusGoodSmall, GrRadial } from 'react-icons/gr';
 
 const CartListComponentBlock = styled.form`
     width: 1080px;
@@ -63,11 +64,15 @@ const CartItemBlock = styled.div`
     }
 `;
 
-const CartItem = ({ cartItem, onIncrease, onDecrease, onRemove }) => {
-    const { number, text, id } = cartItem;
-    const price = 2900;
+const CartItem = ({ onRemove, onDecrease, onIncrease, onToggle, cartItem }) => {
+    console.log(cartItem);
+    const { number, text, id, checked, price } = cartItem;
     return (
         <CartItemBlock>
+            <div className="toggle-img" onClick={() => onToggle(id)}>
+                {checked ? <GrStatusGoodSmall /> : <GrRadial />}
+            </div>
+
             <div className="img_wrap">
                 <img
                     src="https://img-cf.kurly.com/shop/data/goods/1580273855720i0.jpg"
@@ -91,7 +96,15 @@ const CartItem = ({ cartItem, onIncrease, onDecrease, onRemove }) => {
     );
 };
 
-const CartListComponent = ({ cartData, cartError, loading }) => {
+const CartListComponent = ({
+    onRemove,
+    onDecrease,
+    onIncrease,
+    onToggle,
+    cartData,
+    cartError,
+    loading,
+}) => {
     if (cartError) {
         return <ListErrorBlock>에러가 발생했습니다.</ListErrorBlock>;
     }
@@ -99,8 +112,15 @@ const CartListComponent = ({ cartData, cartError, loading }) => {
         <CartListComponentBlock>
             {!loading && cartData && (
                 <div className="cart_item">
-                    {cartData.map((cart) => (
-                        <CartItem cartItem={cart} key={cart.id} />
+                    {cartData.map((cartItem) => (
+                        <CartItem
+                            onRemove={onRemove}
+                            onDecrease={onDecrease}
+                            onIncrease={onIncrease}
+                            onToggle={onToggle}
+                            cartItem={cartItem}
+                            key={cartItem.id}
+                        />
                     ))}
                 </div>
             )}

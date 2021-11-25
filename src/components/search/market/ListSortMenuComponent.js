@@ -32,11 +32,10 @@ const ListSortMenuComponentBlock = styled.div`
     }
 `;
 
-const ListSortMenuComponent = () => {
-    const count = 270;
+const ListSortMenuComponent = ({ counts }) => {
     return (
         <ListSortMenuComponentBlock>
-            <p className="count-number">총 {count} 건</p>
+            <p className="count-number">총 {counts} 건</p>
             <div className="sort-list-wrap">
                 <ul className="sort-list">
                     <li>

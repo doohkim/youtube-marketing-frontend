@@ -6,6 +6,7 @@ import MarketGoodsInfoComponent from '../../../components/detail/market/MarketGo
 import MarketGoodsSectionComponent from '../../../components/detail/market/MarketGoodsSectionComponent';
 import { readPost, unloadPost } from '../../../modules/post';
 import { unloadCartProduct } from '../../../modules/productDetailSelect';
+
 const MarketDetailContainerBlock = styled.div`
     width: 1080px;
     height: auto;
