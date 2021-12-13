@@ -12,7 +12,7 @@ import auth, { authSaga } from './auth';
 import user, { userSaga } from './user';
 import cartTest, { getCartTestSaga } from './cartTest';
 import order, { CartFilterSaga } from './order';
-
+import payment, { paymentSaga } from './payment';
 const rootReducer = combineReducers({
     channel,
     productDetailSelect,
@@ -24,6 +24,7 @@ const rootReducer = combineReducers({
     auth,
     user,
     cartTest,
+    payment,
 });
 export function* rootSaga() {
     yield all([
@@ -34,6 +35,7 @@ export function* rootSaga() {
         authSaga(),
         userSaga(),
         getCartTestSaga(),
+        paymentSaga(),
     ]);
 }
 

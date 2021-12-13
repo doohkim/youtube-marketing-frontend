@@ -7,7 +7,10 @@ import createRequestSaga, {
 
 const [GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAILURE] =
     createRequestActionTypes('posts/GET_POSTS');
-export const getListPosts = createAction(GET_POSTS);
+export const getListPosts = createAction(GET_POSTS, (page, sort) => ({
+    page,
+    sort,
+}));
 
 const getPostsSaga = createRequestSaga(GET_POSTS, postsAPI.getListPosts);
 

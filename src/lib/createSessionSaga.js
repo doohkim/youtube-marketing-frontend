@@ -9,6 +9,10 @@ export default function createSessionSaga(type) {
 
         try {
             const cartdata = JSON.parse(sessionStorage.getItem('cart'));
+            console.log(
+                'get cart Test reducer 실행 , session 에서 데이터 뽑는곳 ',
+            );
+            console.log(cartdata);
             yield put({
                 type: SUCCESS,
                 payload: cartdata,

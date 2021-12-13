@@ -149,6 +149,11 @@ const ShippingContainer = ({ cartData, loading, user }) => {
         },
         [closeModal, address, detailAddress, setAddress],
     );
+    const onOrder = useCallback(() => {
+        if (selectedCartItems.length === 0) {
+            window.alert('주문할 상품을 선택해주세요');
+        }
+    }, [selectedCartItems]);
     const getTotalAmount = (numbers) => {
         if (numbers.length === 0) return 0;
         const sum = numbers.reduce((acc, cur, i) => {
@@ -168,7 +173,7 @@ const ShippingContainer = ({ cartData, loading, user }) => {
                 cartData.filter((cart_item) => cart_item.checked === true),
             );
         }
-    }, [user, cartData]);
+    }, [user, cartData, setAddress, setSelectedCartItems]);
     return (
         <ShippingContainerWrap>
             <div className="address">
@@ -182,7 +187,7 @@ const ShippingContainer = ({ cartData, loading, user }) => {
                 ) : (
                     <div>
                         <div className="text">
-                            <span className="emph">배송지 입력을하고</span>{' '}
+                            <span className="emph">배송지 입력을하고</span>
                             <br />
                             배송유형을 확인해 보세요!
                         </div>
@@ -251,9 +256,16 @@ const ShippingContainer = ({ cartData, loading, user }) => {
                     </dd>
                 </dl>
             </div>
-            <Link to="/order">
-                <Button>주문하기</Button>
-            </Link>
+
+            {!loading && cartData && selectedCartItems.length === 0 ? (
+                <Link to="/list">
+                    <Button onClick={onOrder}>상품을 선택해주세요</Button>
+                </Link>
+            ) : (
+                <Link to="/order">
+                    <Button>주문하기</Button>
+                </Link>
+            )}
         </ShippingContainerWrap>
     );
 };

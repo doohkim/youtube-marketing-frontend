@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
@@ -22,13 +22,9 @@ const CartContainerBlock = styled.div`
     }
     .tit_page {
         text-align: center;
-
-        .tit {
-        }
     }
 `;
-const CartTestContainer = ({ history }) => {
-    const [data, setData] = useState({});
+const CartTestContainer = () => {
     const dispatch = useDispatch();
 
     const { cartTest, cartError, loading, user } = useSelector(
@@ -57,6 +53,7 @@ const CartTestContainer = ({ history }) => {
                     decrease={decrease}
                     toggle={toggle}
                     remove={remove}
+                    user={user}
                 />
                 <ShippingContainer
                     cartData={cartTest}

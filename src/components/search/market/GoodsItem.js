@@ -39,7 +39,7 @@ const GoodsItemBlock = styled.div`
 `;
 
 const GoodsItem = ({ post }) => {
-    const { id, title, post_images, products, min_price } = post;
+    const { id, title, post_images, min_price } = post;
     return (
         <GoodsItemBlock>
             <Link to={`/market/${id}`}>

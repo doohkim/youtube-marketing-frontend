@@ -62,8 +62,7 @@ const OrderItemBlock = styled.div`
     }
 `;
 const OrderItem = ({ OrderItem }) => {
-    const { number, text, id } = OrderItem;
-    const price = 2900;
+    const { number, text, price } = OrderItem;
     return (
         <OrderItemBlock>
             <div className="img_wrap">

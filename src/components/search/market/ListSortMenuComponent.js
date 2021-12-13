@@ -32,29 +32,29 @@ const ListSortMenuComponentBlock = styled.div`
     }
 `;
 
-const ListSortMenuComponent = ({ counts }) => {
+const ListSortMenuComponent = ({ counts, sort, setSort }) => {
     return (
         <ListSortMenuComponentBlock>
             <p className="count-number">총 {counts} 건</p>
             <div className="sort-list-wrap">
                 <ul className="sort-list">
-                    <li>
+                    <li onClick={() => setSort(1)}>
                         <Link className="sort-menu" to="#">
                             추천순
                         </Link>
                     </li>
 
-                    <li>
+                    <li onClick={() => setSort(2)}>
                         <Link className="sort-menu" to="#">
                             |&nbsp;&nbsp;인기순
                         </Link>
                     </li>
-                    <li>
+                    <li onClick={() => setSort(3)}>
                         <Link className="sort-menu" to="#">
                             |&nbsp;&nbsp;낮은 가격순
                         </Link>
                     </li>
-                    <li>
+                    <li onClick={() => setSort(4)}>
                         <Link className="sort-menu" to="#">
                             |&nbsp;&nbsp;높은 가격순
                         </Link>

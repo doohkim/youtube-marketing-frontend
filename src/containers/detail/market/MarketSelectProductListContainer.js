@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import MarketGoodsInsertComponent from '../../../components/detail/market/MarketGoodsInsertComponent';
 import MarketGoodsSelectedProductListComponent from '../../../components/detail/market/MarketGoodsSelectedProductListComponent';
 import useActions from '../../../lib/useActions';
+import { setCartTest } from '../../../modules/cartTest';
 import {
     changeInput,
     insert,
@@ -35,7 +36,8 @@ const MarketSelectProductListContainerBlock = styled.div`
     }
 `;
 
-const MarketSelectProductListContainer = ({ products, history }) => {
+const MarketSelectProductListContainer = ({ products, history, match }) => {
+    const dispatch = useDispatch();
     const [cartList, setCartList] = useState([]);
     const { input, selectProducts } = useSelector(
         ({ productDetailSelect }) => ({
@@ -51,12 +53,16 @@ const MarketSelectProductListContainer = ({ products, history }) => {
         let cart_db = [];
         let new_cart = [];
         let overlap_list = [];
+        console.log('클릭했을때 cartList 값', cartList);
 
         if (cartList.length >= 0 && selectProducts.length === 0) {
+            // cartList(session에서 가져와서 설정한값 존재) && 아무것도 선택하지 않은 경우
             console.log('카트 변경 없음');
             // sessionStorage.setItem('cart', JSON.stringify(cartList));
         } else if (cartList.length === 0) {
+            // cartList가 비어있을 경우
             sessionStorage.setItem('cart', JSON.stringify(selectProducts));
+            console.log('cartList가 비어있고 상품을 선택했을경우');
         } else {
             cartList.map((cart_item) => {
                 selectProducts.map((select_item) => {
@@ -70,6 +76,7 @@ const MarketSelectProductListContainer = ({ products, history }) => {
                     }
                 });
             });
+
             console.log('중복 데이터', new_cart);
             console.log('중복 리스트 아이디', overlap_list);
             if (overlap_list.length !== 0) {
@@ -96,27 +103,35 @@ const MarketSelectProductListContainer = ({ products, history }) => {
                 );
             } else {
                 console.log('중복이 없음');
+                console.log(cartList.concat(selectProducts));
                 sessionStorage.setItem(
                     'cart',
                     JSON.stringify(cartList.concat(selectProducts)),
                 );
             }
         }
+        console.log('클릭 마지막 session에 저장한값 가져오기');
+        console.log(JSON.parse(sessionStorage.getItem('cart')));
+        dispatch(setCartTest(JSON.parse(sessionStorage.getItem('cart'))));
         cart_db = [];
         new_cart = [];
         overlap_list = [];
         if (window.confirm('장바구니 고?')) {
             history.push('/list');
         } else {
-            history.push(`/search/market/`);
+            history.push(`/market/${match.params.postId}`);
         }
     }, [selectProducts, cartList]);
 
     useEffect(() => {
+        // session 에서 cart 데이터 가져오기
         const cart = JSON.parse(sessionStorage.getItem('cart'));
+        console.log('session에서 cart 데이터 가져옴', cart);
         if (cart) {
             setCartList(cart);
+            console.log('set cartList 설정', cartList);
         }
+        console.log();
     }, [setCartList]);
     return (
         <MarketSelectProductListContainerBlock>

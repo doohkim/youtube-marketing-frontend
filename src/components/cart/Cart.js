@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { GrRadial, GrStatusGoodSmall } from 'react-icons/gr';
 import { MdRemoveCircleOutline } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
+import { withRouter } from 'react-router';
+import Button from '../common/Button';
 const CartBlock = styled.div`
     width: 742px;
     padding-top: 3rem;
@@ -96,13 +98,17 @@ const CartItem = ({ cartItem, onRemove, onDecrease, onIncrease, onToggle }) => {
         </CartItemBlock>
     );
 };
-const Cart = ({ loading, cart, error, remove, decrease, toggle, increase }) => {
-    if (error) {
-        return <CartBlock>에러가 발생했습니다.</CartBlock>;
-    }
-    if (loading || !cart) {
-        return <CartBlock>{null}</CartBlock>;
-    }
+const Cart = ({
+    user,
+    loading,
+    cart,
+    error,
+    remove,
+    decrease,
+    toggle,
+    increase,
+    history,
+}) => {
     const dispatch = useDispatch();
 
     const onIncrease = useCallback(
@@ -139,6 +145,27 @@ const Cart = ({ loading, cart, error, remove, decrease, toggle, increase }) => {
             ? sessionStorage.setItem('cart', JSON.stringify(cart))
             : console.log('not cart data'),
     );
+    //useEffect
+    useEffect(() => {
+        console.log('useeffect', user);
+        if (user) {
+            console.log('useeffect', error);
+            if (error) {
+                // console.log(error);
+                history.push('/search/market');
+            }
+        }
+    }, [dispatch, history, user]);
+    if (error) {
+        return (
+            <CartBlock>
+                <Button to="/search/market">돌아가기</Button>
+            </CartBlock>
+        );
+    }
+    if (loading || !cart || cart.length === 0) {
+        return <CartBlock>장바구니에 담긴 상품이 없습니다.</CartBlock>;
+    }
     return (
         <CartBlock>
             {!loading && cart && (
@@ -158,4 +185,4 @@ const Cart = ({ loading, cart, error, remove, decrease, toggle, increase }) => {
         </CartBlock>
     );
 };
-export default Cart;
+export default withRouter(Cart);

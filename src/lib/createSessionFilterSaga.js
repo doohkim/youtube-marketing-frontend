@@ -11,7 +11,6 @@ export default function createSessionFilterSaga(type) {
             const cartdata = JSON.parse(sessionStorage.getItem('cart')).filter(
                 (cart_item) => cart_item.checked === true,
             );
-            console.log('cartdata');
 
             yield put({
                 type: SUCCESS,

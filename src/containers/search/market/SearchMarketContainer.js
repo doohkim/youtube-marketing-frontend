@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import PaginationComponent from '../../../components/common/PaginationComponent';
 import GoodListComponent from '../../../components/search/market/GoodListComponent';
 import { getListPosts } from '../../../modules/posts';
 
@@ -21,6 +22,8 @@ const SearchMarketContainerBlock = styled.div`
 `;
 
 const SearchMarketContainer = () => {
+    const [page, setPage] = useState(1);
+    const [sort, setSort] = useState(1);
     const dispatch = useDispatch();
     const { posts, postsError, loading } = useSelector(
         ({ posts, loading }) => ({
@@ -31,8 +34,8 @@ const SearchMarketContainer = () => {
     );
 
     useEffect(() => {
-        dispatch(getListPosts());
-    }, [dispatch]);
+        dispatch(getListPosts(page, sort));
+    }, [dispatch, page, sort]);
     return (
         <SearchMarketContainerBlock>
             <div className="title">신상품</div>
@@ -40,6 +43,15 @@ const SearchMarketContainer = () => {
                 posts={posts}
                 postsError={postsError}
                 loading={loading}
+                setSort={setSort}
+                sort={sort}
+            />
+            <PaginationComponent
+                posts={posts}
+                postsError={postsError}
+                loading={loading}
+                setPage={setPage}
+                page={page}
             />
         </SearchMarketContainerBlock>
     );

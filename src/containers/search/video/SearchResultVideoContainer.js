@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PaginationComponent from '../../../components/common/PaginationComponent';
 import VideoContentHeaderContainer from './common/VideoContentHeaderContainer';
 import VideoListContainer from './common/VideoListContainer';
 
@@ -21,6 +22,7 @@ const SearchResultVideoContainer = () => {
         <SearchResultVideoContainerBlock>
             <VideoContentHeaderContainer />
             <VideoListContainer />
+            <PaginationComponent />
         </SearchResultVideoContainerBlock>
     );
 };

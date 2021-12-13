@@ -31,7 +31,7 @@ const InnerGoodsListComponentBlock = styled.div`
         }
     }
 `;
-const GoodListComponent = ({ posts, postsError, loading }) => {
+const GoodListComponent = ({ posts, postsError, loading, sort, setSort }) => {
     if (postsError) {
         return (
             <InnerGoodsListComponentBlock>
@@ -44,7 +44,11 @@ const GoodListComponent = ({ posts, postsError, loading }) => {
     }
     return (
         <GoodListComponentBlock>
-            <ListSortMenuComponent counts={posts.count} />
+            <ListSortMenuComponent
+                counts={posts.count}
+                setSort={setSort}
+                sort={sort}
+            />
             <InnerGoodsListComponentBlock>
                 <ul className="list">
                     {!loading &&

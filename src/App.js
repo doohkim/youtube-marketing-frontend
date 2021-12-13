@@ -11,6 +11,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import PopupPage from './pages/PopupPage';
 import CartListPage from './pages/CartListPage';
+import PaymentPage from './pages/PaymentPage';
 
 const App = () => {
     return (
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/register" component={RegisterPage} />
             <Route path="/popup" component={PopupPage} />
             <Route path="/list" component={CartListPage} />
+            <Route path="/payment" component={PaymentPage} />
         </div>
     );
 };
