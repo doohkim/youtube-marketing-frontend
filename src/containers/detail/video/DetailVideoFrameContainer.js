@@ -13,13 +13,13 @@ const DetailVideoFrameContainerBlock = styled.div`
     }
 `;
 
-const DetailVideoFrameContainer = () => {
+const DetailVideoFrameContainer = ({ videoId }) => {
     return (
         <DetailVideoFrameContainerBlock>
             <iframe
                 width="560"
                 height="315"
-                src="https://www.youtube.com/embed/PSlNYQUbf30?start=60"
+                src={`https://youtube.com/embed/${videoId}`}
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

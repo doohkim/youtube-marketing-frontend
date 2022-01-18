@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import VideoListContentComponent from '../../../../components/search/video/VideoListContentComponent';
+import { getListVideo } from '../../../../modules/videos';
 
 const VideoListContainerWrap = styled.div`
     width: 1061px;
@@ -13,24 +15,23 @@ const VideoListContainerWrap = styled.div`
 `;
 
 const VideoListContainer = () => {
+    const dispatch = useDispatch();
+    const { videoList, isLoading, videoListError } = useSelector(
+        ({ video }) => ({
+            videoList: video.videoList,
+            isLoading: video.isLoading,
+            videoListError: video.videoListError,
+        }),
+    );
+    useEffect(() => {
+        dispatch(getListVideo());
+    }, [dispatch]);
     return (
         <VideoListContainerWrap>
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
+            {videoList &&
+                videoList.map((video) => (
+                    <VideoListContentComponent video={video} />
+                ))}
         </VideoListContainerWrap>
     );
 };

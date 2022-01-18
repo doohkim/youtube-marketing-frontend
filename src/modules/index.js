@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import { all } from 'redux-saga/effects';
 
-import channel from './channel';
+import channel, { channelListSaga } from './channel';
 import productDetailSelect from './productDetailSelect';
 import posts, { postsSaga } from './posts';
 import post, { postSaga } from './post';
@@ -13,6 +13,7 @@ import user, { userSaga } from './user';
 import cartTest, { getCartTestSaga } from './cartTest';
 import order, { CartFilterSaga } from './order';
 import payment, { paymentSaga } from './payment';
+import video, { videoListSaga } from './videos';
 const rootReducer = combineReducers({
     channel,
     productDetailSelect,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     posts,
     loading,
     // cart,
+    video,
     order,
     auth,
     user,
@@ -31,6 +33,8 @@ export function* rootSaga() {
         postsSaga(),
         postSaga(),
         // cartSaga(),
+        channelListSaga(),
+        videoListSaga(),
         CartFilterSaga(),
         authSaga(),
         userSaga(),

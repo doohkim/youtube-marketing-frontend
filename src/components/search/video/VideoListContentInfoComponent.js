@@ -7,11 +7,16 @@ const VideoListContentInfoComponentWrap = styled.div`
     display: flex;
     .profileThumbnail {
         /* background: gray; */
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
     }
 
     .profileInfo {
         flex: 1;
-        background: white;
         .profileTitle {
         }
         .profileState {
@@ -24,15 +29,28 @@ const VideoListContentInfoComponentWrap = styled.div`
     }
 `;
 
-const VideoListContentInfoComponent = () => {
+const VideoListContentInfoComponent = ({
+    channelLogo,
+    channelTitle,
+    view_count,
+    published_at,
+}) => {
     return (
         <VideoListContentInfoComponentWrap>
-            <div className="profileThumbnail">image</div>
+            <div className="profileThumbnail">
+                <img
+                    src={channelLogo.replace(
+                        'http://youtube-market-front.s3.amazonaws.com/https%3A/',
+                        'https://',
+                    )}
+                    alt="logo"
+                />
+            </div>
             <div className="profileInfo">
-                <div className="profileTitle">channel title</div>
+                <div className="profileTitle">{channelTitle}</div>
                 <div className="profileState">
-                    <div className="profileViewCount">220,220</div>
-                    <div className="profilePublishedAt">2021-09-09</div>
+                    <div className="profileViewCount">{view_count}</div>
+                    <div className="profilePublishedAt">{published_at}</div>
                 </div>
             </div>
         </VideoListContentInfoComponentWrap>

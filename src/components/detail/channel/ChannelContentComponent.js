@@ -30,19 +30,28 @@ const ChannelContentComponentWrap = styled.div`
     }
 `;
 
-const ChannelContentComponent = () => {
+const ChannelContentComponent = ({ channel }) => {
+    const {
+        channel_title,
+        channel_logo,
+        channel_description,
+        subscriber_count,
+    } = channel;
     return (
         <ChannelContentComponentWrap>
             <div className="profileThumbnail">
                 <img
-                    src="https://yt3.ggpht.com/ytc/AKedOLRhY0cWgT98nkPG7ByziBdAP-eBAEVxBc-eyvZG=s800-c-k-c0x00ffffff-no-rj"
+                    src={channel_logo.replace(
+                        'http://youtube-market-front.s3.amazonaws.com/https%3A/',
+                        'https://',
+                    )}
                     alt="thumbnail"
                     width="55"
                 />
             </div>
             <div className="profileInfo">
-                <div className="profileTitle">channel title</div>
-                <div className="profileState">구독자 수 6140만</div>
+                <div className="profileTitle">{channel_title}</div>
+                <div className="profileState">구독자 수 {subscriber_count}</div>
             </div>
         </ChannelContentComponentWrap>
     );

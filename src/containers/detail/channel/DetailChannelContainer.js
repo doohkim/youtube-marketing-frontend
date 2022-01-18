@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
+
 import styled from 'styled-components';
 import DetailChannelInfoComponent from '../../../components/detail/channel/DetailChannelInfoComponent';
 import DetailChannelThumbnailComponent from '../../../components/detail/channel/DetailChannelThumbnailComponent';
+import { readChannel, unloadChannel } from '../../../modules/channel';
 
 import AnalysisContainer from './AnalysisContainer';
 
@@ -42,13 +45,35 @@ const Category = styled(NavLink)`
         margin-left: 1rem;
     }
 `;
-const DetailChannelContainer = () => {
-    const channelId = 'UCOmHUn--16B90oW2L6FRR3A';
+const DetailChannelContainer = ({ match }) => {
+    // const channelId = 'UCOmHUn--16B90oW2L6FRR3A';
+    const channelId = match.params.channelId;
+    const dispatch = useDispatch();
+    const { channelDetail, isLoading, channelDetailError } = useSelector(
+        ({ channel }) => ({
+            channelDetail: channel.channelDetail,
+            isLoading: channel.isLoading,
+            channelDetailError: channel.channelDetailError,
+        }),
+    );
+    useEffect(() => {
+        dispatch(unloadChannel());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(readChannel(channelId));
+    }, [dispatch]);
     return (
         <DetailChannelContainerBlock>
-            <DetailChannelThumbnailComponent />
+            {channelDetail && (
+                <DetailChannelThumbnailComponent
+                    channelDetail={channelDetail}
+                />
+            )}
             <div className="DetailChannelContentWrap">
-                <DetailChannelInfoComponent />
+                {channelDetail && (
+                    <DetailChannelInfoComponent channelDetail={channelDetail} />
+                )}
 
                 <Category to={`/channel/${channelId}/channel`} exact>
                     채널분석
@@ -65,4 +90,4 @@ const DetailChannelContainer = () => {
         </DetailChannelContainerBlock>
     );
 };
-export default DetailChannelContainer;
+export default withRouter(DetailChannelContainer);

@@ -3,7 +3,6 @@ import DetailVideoContainer from '../containers/detail/video/DetailVideoContaine
 import Header from '../containers/Header';
 
 const DetailVideoPage = ({ match }) => {
-    console.log('detail', match);
     return (
         <div>
             <Header />

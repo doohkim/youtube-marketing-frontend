@@ -29,15 +29,54 @@ const ChannelSubscriberChangeChartComponentWrap = styled.div`
     }
 `;
 
-const ChannelSubscriberChangeChartComponent = () => {
+const ChannelSubscriberChangeChartComponent = ({ channelDetail }) => {
+    const { channel_statistics, published_at, title } = channelDetail;
+    const channel_published_date_list = [];
+    const channel_subscriber_count_list = [];
+    const channel_view_count_list = [];
+    for (let channel_stt of channel_statistics) {
+        channel_published_date_list.push(channel_stt.created_at);
+        channel_subscriber_count_list.push(channel_stt.subscriber_count);
+        channel_view_count_list.push(channel_stt.view_count);
+    }
+
     return (
         <ChannelSubscriberChangeChartComponentWrap>
             <div className="channel-chart-wrap">
-                <Line />
+                <Line
+                    data={{
+                        labels: channel_published_date_list.reverse(),
+                        datasets: [
+                            {
+                                label: `${title} 구독자 수 변화량`,
+                                data: channel_subscriber_count_list.reverse(),
+                                fill: false,
+                                borderColor: 'rgb(75, 192, 192)',
+                                tension: 0.1,
+                            },
+                        ],
+                    }}
+                    options={{ maintainAspectRatio: false }}
+                />
             </div>
             <div className="channel-chart-wrap">
-                <Line />
+                <Line
+                    data={{
+                        labels: channel_published_date_list.reverse(),
+                        datasets: [
+                            {
+                                label: `${title} 채널 일일 조회수 변화량`,
+                                data: channel_view_count_list.reverse(),
+                                fill: false,
+                                borderColor: 'rgb(75, 192, 192)',
+                                tension: 0.1,
+                            },
+                        ],
+                    }}
+                    options={{ maintainAspectRatio: false }}
+                />
             </div>
+            {/* <h2>차트1</h2>
             <div className="channel-chart-bottom-wrap">
                 <div className="channel-active-rate-wrap">
                     <Line />
@@ -45,7 +84,7 @@ const ChannelSubscriberChangeChartComponent = () => {
                 <div className="channel-active-like-rate-wrap">
                     <Line />
                 </div>
-            </div>
+            </div> */}
         </ChannelSubscriberChangeChartComponentWrap>
     );
 };

@@ -24,7 +24,7 @@ const VideoContentHeaderContainer = () => {
             <div className="channelName">title</div>
             <div className="videoSortingwrap">
                 <div className="videoSortingStandard">구독자순</div>
-                <div className="videoSortingStandard">업데이트 날짜 순</div>
+                <div className="videoSortingStandard">날짜 순</div>
             </div>
         </VideoContentHeaderContainerWrap>
     );

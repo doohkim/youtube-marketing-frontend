@@ -81,13 +81,20 @@ const DetailVideoInfoWrap = styled.div`
     }
 `;
 
-const DetailVideoInfoComponent = () => {
+const DetailVideoInfoComponent = ({
+    title,
+    description,
+    published_at,
+    video_statistics,
+}) => {
+    const { view_count, like_count, dislike_count, comment_count } =
+        video_statistics[0];
     // const contentRef = useRef(null);
     // const [isShowReadMore, setIsShowReadMore] = useState(false);
-    const data = `적당한 모바일 화면에서는 잘 되는 것 같지만, 반응형 대응이 잘 안되어 마음에 썩 들지 않았다.
-    화면이 큰 모바일의 경우 텍스트들이 한줄이 되는데도 불구하고 더보기 버튼이 생성되게 되는데, 이런 경우에는 더보기 버튼은 없어지고 내용이 다 보여야 한다고 생각했다.
-    사용할만한 상황: 텍스트 줄 수에 크게 상관이 없고, 적당히 텍스트의 글이 보일 만큼 보이고 더보기로 가려놓길 바란다면 사용하기 좋을 것 같다.
-    근데 이게 디자인과 가장 비슷하게 나온다..(예고)`;
+    // const data = `적당한 모바일 화면에서는 잘 되는 것 같지만, 반응형 대응이 잘 안되어 마음에 썩 들지 않았다.
+    // 화면이 큰 모바일의 경우 텍스트들이 한줄이 되는데도 불구하고 더보기 버튼이 생성되게 되는데, 이런 경우에는 더보기 버튼은 없어지고 내용이 다 보여야 한다고 생각했다.
+    // 사용할만한 상황: 텍스트 줄 수에 크게 상관이 없고, 적당히 텍스트의 글이 보일 만큼 보이고 더보기로 가려놓길 바란다면 사용하기 좋을 것 같다.
+    // 근데 이게 디자인과 가장 비슷하게 나온다..(예고)`;
     // const onClick = (e) => {
     //     contentRef.current.classList.add('show');
     //     e.currentTarget.classList.add('hide');
@@ -109,22 +116,20 @@ const DetailVideoInfoComponent = () => {
                 <div className="detail-video-view-container">
                     <div className="">
                         조회수
-                        <span> : 1,052,566</span>
+                        <span> : {view_count}</span>
                     </div>
                     <div>
                         &nbsp;&nbsp;&nbsp;날짜
-                        <span> : 2021-08-30</span>
+                        <span> : {published_at}</span>
                     </div>
                 </div>
                 <div>
-                    <h3>
-                        fromis_9 (프로미스나인) 'Talk & Talk' Official Teaser 2
-                    </h3>
+                    <h3>{title}</h3>
                 </div>
                 <div className="detail-video-decription">
-                    {toggleEllipsis(data, limit).string}
-                    {toggleEllipsis(data, limit).isShowMore && (
-                        <MoreButton onClick={onClickMore(data)}>
+                    {toggleEllipsis(description, limit).string}
+                    {toggleEllipsis(description, limit).isShowMore && (
+                        <MoreButton onClick={onClickMore(description)}>
                             ...더보기
                         </MoreButton>
                     )}
@@ -138,15 +143,15 @@ const DetailVideoInfoComponent = () => {
             <div className="detail-share-image-block">
                 <div className="share-image-info">
                     <IoIosThumbsUp />
-                    <span>2698</span>
+                    <span>{like_count}</span>
                 </div>
                 <div className="share-image-info">
                     <IoIosThumbsDown />
-                    <span>85</span>
+                    <span>{dislike_count}</span>
                 </div>
                 <div className="share-image-info">
                     <AiOutlineComment />
-                    <span>961</span>
+                    <span>{comment_count}</span>
                 </div>
                 <div className="share-image-info">
                     <IoIosShareAlt style={{ width: 35, height: 35 }} />

@@ -8,11 +8,15 @@ const ChannelPerformanceSummaryChartBlock = styled.div`
     display: flex;
 `;
 
-const ChannelPerformanceSummaryChart = () => {
+const ChannelPerformanceSummaryChart = ({ channelDetail }) => {
     return (
         <ChannelPerformanceSummaryChartBlock>
-            <ChannelPerformanceSummaryChartComponent />
-            <ChannelPerformanceSummaryInfoComponent />
+            <ChannelPerformanceSummaryChartComponent
+                channelDetail={channelDetail}
+            />
+            <ChannelPerformanceSummaryInfoComponent
+                channelDetail={channelDetail}
+            />
         </ChannelPerformanceSummaryChartBlock>
     );
 };

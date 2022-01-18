@@ -7,15 +7,27 @@ const ChannelPerformanceSummaryChartComponentWrap = styled.div`
     border-right: 1px solid #dcdcdc;
 `;
 
-const ChannelPerformanceSummaryChartComponent = () => {
+const ChannelPerformanceSummaryChartComponent = ({ channelDetail }) => {
+    const { channel_statistics, published_at, channel_likeability_index } =
+        channelDetail;
+    const { view_count, video_count, diff_view_count } = channel_statistics[1];
+    const { like_ability } = channel_likeability_index;
+    const daysOfpublished =
+        (new Date() - new Date(published_at)) / 1000 / 60 / 60 / 24;
+
     const data = {
-        labels: ['1900', '1950', '1999', '2050'],
+        labels: ['일일조회수', '영상별 평균 조회수', '조회수 증가율', '호감도'],
         datasets: [
             {
-                label: 'Europe',
+                label: '채널 Performance 요약',
                 type: 'bar',
                 backgroundColor: 'rgba(0,0,0,0.2)',
-                data: [1, 181, -47, 23],
+                data: [
+                    view_count / daysOfpublished / 10000,
+                    view_count / video_count / 10000,
+                    diff_view_count / 100,
+                    like_ability,
+                ],
             },
         ],
     };

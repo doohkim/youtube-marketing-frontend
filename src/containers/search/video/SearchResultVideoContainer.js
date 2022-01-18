@@ -8,7 +8,6 @@ const SearchResultVideoContainerBlock = styled.div`
     width: 1080px;
     height: 1114px;
     border-radius: 3px;
-    background: gray;
     display: flex;
     flex-direction: column;
     /* padding: 20px 25px 25px; */

@@ -102,28 +102,38 @@ const DetailChannelInfoComponentWrap = styled.div`
     }
 `;
 
-const DetailChannelInfoComponent = () => {
+const DetailChannelInfoComponent = ({ channelDetail }) => {
+    const {
+        pk,
+        title,
+        logo,
+        description,
+        published_at,
+        channel_statistics,
+        categories,
+    } = channelDetail;
     return (
         <DetailChannelInfoComponentWrap>
             <div className="channelInfoWrap">
                 <div className="channelInfoThumbnail">
                     <img
-                        src="https://yt3.ggpht.com/ytc/AKedOLTat8_vr7h2i29n67lvNLMp1F-9Ch2ejFRlRzt0zQ=s100-c-k-c0x00ffffff-no-rj-mo"
-                        alt="BLACKPINK"
+                        src={logo.replace(
+                            'http://youtube-market-front.s3.amazonaws.com/https%3A/',
+                            'https://',
+                        )}
+                        alt={title}
                     />
                 </div>
                 <div className="channelInfoContentWrap">
-                    <div className="title">BLACKPINK</div>
+                    <div className="title">{title}</div>
                     <div className="description">
-                        <span>
-                            BLACKPINK Official YouTube Channel 블랙핑크 공식
-                            유튜브 채널입니다. JISOO, JENNIE, ROSÉ, LISA 지수,
-                            제니, 로제, 리사ddddddddddddddddddddddddd
-                        </span>
+                        <span>{description}</span>
                     </div>
                     <div className="channelTagWrap">
-                        <p>음악</p>
-                        <p>먹방</p>
+                        {categories &&
+                            categories.map((category) => (
+                                <p key={category.id}>{category.kind}</p>
+                            ))}
                     </div>
                     <div className="channel-contact-wrap">
                         <div className="search-channel-contact-icon">

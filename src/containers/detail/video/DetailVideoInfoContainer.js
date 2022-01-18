@@ -9,11 +9,24 @@ const DetailVideoInfoContainerBlock = styled.div`
     padding: 2rem;
 `;
 
-const DetailVideoInfoContainer = () => {
+const DetailVideoInfoContainer = ({ videoDetail }) => {
+    const {
+        title,
+        description,
+        thumbnail,
+        published_at,
+        video_statistics,
+        channel,
+    } = videoDetail;
     return (
         <DetailVideoInfoContainerBlock>
-            <DetailVideoInfoComponent />
-            <ChannelContentComponent />
+            <DetailVideoInfoComponent
+                title={title}
+                description={description}
+                published_at={published_at}
+                video_statistics={video_statistics}
+            />
+            <ChannelContentComponent channel={channel} />
         </DetailVideoInfoContainerBlock>
     );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoListContentComponent from '../../../../components/search/video/VideoListContentComponent';
+import VideoAnalysisListContentComponent from '../../../../components/search/video/VideoAnalysisListContentComponent';
 
 const VideoAnalysisListContainerWrap = styled.div`
     width: 1061px;
@@ -9,20 +9,22 @@ const VideoAnalysisListContainerWrap = styled.div`
     /* height: 670px; */
     display: flex;
     flex-wrap: wrap;
-    background: gray;
 `;
 
-const VideoAnalysisListContainer = () => {
+const VideoAnalysisListContainer = ({ channelDetail }) => {
+    const { videos, title, logo } = channelDetail;
+
     return (
         <VideoAnalysisListContainerWrap>
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
-            <VideoListContentComponent />
+            {videos &&
+                videos.map((video) => (
+                    <VideoAnalysisListContentComponent
+                        key={video.id}
+                        video={video}
+                        channelTitle={title}
+                        channelLogo={logo}
+                    />
+                ))}
         </VideoAnalysisListContainerWrap>
     );
 };

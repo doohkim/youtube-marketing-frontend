@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 import SearchResultContentComponent from './SearchResultContentComponent';
@@ -14,10 +14,6 @@ const SearchResultContentList = ({
     channelContentList,
     // setChannelContentList,
 }) => {
-    // const [channelContentList, setChannelContentList] = useState(
-    //     data.channelsForList,
-    // );
-
     // const onToggle = useCallback(
     //     (title) => {
     //         setChannelContentList(
@@ -37,14 +33,15 @@ const SearchResultContentList = ({
 
     return (
         <SearchResultContentListBlock>
-            {channelContentList.map((channelList, index) => (
-                <SearchResultContentComponent
-                    info={channelList}
-                    index={index}
-                    key={index}
-                    // onToggle={onToggle}
-                />
-            ))}
+            {channelContentList &&
+                channelContentList.map((channelList, index) => (
+                    <SearchResultContentComponent
+                        info={channelList}
+                        index={index}
+                        key={index}
+                        // onToggle={onToggle}
+                    />
+                ))}
         </SearchResultContentListBlock>
     );
 };

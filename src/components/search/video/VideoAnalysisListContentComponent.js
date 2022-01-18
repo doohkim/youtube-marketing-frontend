@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import VideoListContentInfoComponent from './VideoListContentInfoComponent';
 
-const VideoListContentComponentBlock = styled.div`
+const VideoAnalysisListContentComponentBlock = styled.div`
     width: 265px;
     height: 250px;
     display: flex;
@@ -26,20 +26,15 @@ const VideoListContentComponentBlock = styled.div`
     }
 `;
 
-const VideoListContentComponent = ({ video }) => {
-    const {
-        id,
-        title,
-        description,
-        published_at,
-        thumbnail,
-        video_statistics,
-        channel,
-    } = video;
+const VideoAnalysisListContentComponent = ({
+    video,
+    channelLogo,
+    channelTitle,
+}) => {
+    const { id, thumbnail, title, published_at, video_statistics } = video;
     const { view_count } = video_statistics;
-    const { channel_title, channel_logo, channel_description } = channel;
     return (
-        <VideoListContentComponentBlock>
+        <VideoAnalysisListContentComponentBlock>
             <Link to={`/detail/${id}`}>
                 <div className="videoThumbnail">
                     <img
@@ -53,12 +48,12 @@ const VideoListContentComponent = ({ video }) => {
                 <div className="videoTitle">{title}</div>
             </Link>
             <VideoListContentInfoComponent
-                channelTitle={channel_title}
-                channelLogo={channel_logo}
+                channelTitle={channelTitle}
+                channelLogo={channelLogo}
                 published_at={published_at}
                 view_count={view_count}
             />
-        </VideoListContentComponentBlock>
+        </VideoAnalysisListContentComponentBlock>
     );
 };
-export default VideoListContentComponent;
+export default VideoAnalysisListContentComponent;

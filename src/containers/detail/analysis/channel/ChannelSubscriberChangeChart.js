@@ -7,10 +7,12 @@ const ChannelSubscriberChangeChartBlock = styled.div`
     height: auto;
 `;
 
-const ChannelSubscriberChangeChart = () => {
+const ChannelSubscriberChangeChart = ({ channelDetail }) => {
     return (
         <ChannelSubscriberChangeChartBlock>
-            <ChannelSubscriberChangeChartComponent />
+            <ChannelSubscriberChangeChartComponent
+                channelDetail={channelDetail}
+            />
         </ChannelSubscriberChangeChartBlock>
     );
 };

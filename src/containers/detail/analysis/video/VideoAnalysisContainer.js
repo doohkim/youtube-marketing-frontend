@@ -9,12 +9,23 @@ const VideoAnalysisContainerBlock = styled.div`
     height: auto;
 `;
 
-const VideoAnalysisContainer = () => {
+const VideoAnalysisContainer = ({ channelDetail, isLoading, Error }) => {
+    if (isLoading) {
+        return <div> 준비중 </div>;
+    }
     return (
         <VideoAnalysisContainerBlock>
-            <VideoPerformanceSummaryComponent />
-            <VideoUploadTermComponent />
-            <VideoAnalysisListContainer />
+            {channelDetail && (
+                <VideoPerformanceSummaryComponent
+                    channelDetail={channelDetail}
+                />
+            )}
+            {channelDetail && (
+                <VideoUploadTermComponent channelDetail={channelDetail} />
+            )}
+            {channelDetail && (
+                <VideoAnalysisListContainer channelDetail={channelDetail} />
+            )}
         </VideoAnalysisContainerBlock>
     );
 };

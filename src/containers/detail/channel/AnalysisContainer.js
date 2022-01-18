@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import ChannelAnalysisContainer from '../analysis/channel/ChannelAnalysisContainer';
 import VideoAnalysisContainer from '../analysis/video/VideoAnalysisContainer';
@@ -16,15 +18,33 @@ const AnalysisContainerBlock = styled.div`
 
 const AnalysisContainer = ({ match }) => {
     const { type } = match.params;
-
+    const { channelDetail, isLoading, channelDetailError } = useSelector(
+        ({ channel }) => ({
+            channelDetail: channel.channelDetail,
+            isLoading: channel.isLoading,
+            channelDetailError: channel.channelDetailError,
+        }),
+    );
     return (
         <AnalysisContainerBlock>
             {type === 'viewer' ? (
-                <ViewersAnalysisContainer />
+                <ViewersAnalysisContainer
+                    channelDetail={channelDetail}
+                    isLoading={isLoading}
+                    Error={channelDetailError}
+                />
             ) : type === 'video' ? (
-                <VideoAnalysisContainer />
+                <VideoAnalysisContainer
+                    channelDetail={channelDetail}
+                    isLoading={isLoading}
+                    Error={channelDetailError}
+                />
             ) : type === 'channel' ? (
-                <ChannelAnalysisContainer />
+                <ChannelAnalysisContainer
+                    channelDetail={channelDetail}
+                    isLoading={isLoading}
+                    Error={channelDetailError}
+                />
             ) : null}
         </AnalysisContainerBlock>
     );

@@ -137,15 +137,14 @@ const SearchResultContentComponentBlock = styled.div`
 
 const SearchResultContentComponent = ({ info, index, onToggle }) => {
     const {
-        channelId,
+        pk,
         title,
         isCertificated,
-        thumbnails,
+        logo,
         description,
-        subscriberCount,
-        dailyViewChange,
-        averageVideoViewCount,
-        lastVideo,
+        published_at,
+        channel_statistics,
+        videos,
     } = info;
     return (
         <SearchResultContentComponentBlock>
@@ -165,20 +164,26 @@ const SearchResultContentComponent = ({ info, index, onToggle }) => {
                     </div>
                 </div>
                 <div className="search-channel-thumbnail-wrap">
-                    <Link to={`/channel/${channelId}/channel`}>
-                        <img src={thumbnails} alt="thumbnail" />
+                    <Link to={`/channel/${pk}/channel`}>
+                        <img
+                            src={logo.replace(
+                                'http://youtube-market-front.s3.amazonaws.com/https%3A/',
+                                'https://',
+                            )}
+                            alt="thumbnail"
+                        />
                     </Link>
                 </div>
                 <div className="search-channel-description-wrap">
                     <Link
                         className="link-reset-wrap"
-                        to={`/channel/${channelId}/channel`}
+                        to={`/channel/${pk}/channel`}
                     >
                         <div>{title}</div>
                     </Link>
                     <Link
                         className="link-reset-wrap"
-                        to={`/channel/${channelId}/channel`}
+                        to={`/channel/${pk}/channel`}
                     >
                         <div className="search-channel-description-text">
                             {description}
@@ -205,17 +210,29 @@ const SearchResultContentComponent = ({ info, index, onToggle }) => {
                             </i>
                             <span>구독자 수 : </span>
                         </p>
-                        <p>{Math.round(subscriberCount / 10000)}만</p>
+                        <p>
+                            {Math.round(
+                                channel_statistics.subscriber_count / 10000,
+                            )}
+                            만
+                        </p>
                         <p>
                             <i>
-                                {Math.round(subscriberCount / 10000) > 0 ? (
+                                {Math.round(
+                                    channel_statistics.subscriber_count / 10000,
+                                ) > 0 ? (
                                     <FaLongArrowAltUp />
                                 ) : (
                                     <FaLongArrowAltDown />
                                 )}
                             </i>
                             <span>
-                                {Math.abs(Math.round(subscriberCount / 10000))}{' '}
+                                {Math.abs(
+                                    Math.round(
+                                        channel_statistics.subscriber_count /
+                                            10000,
+                                    ),
+                                )}
                             </span>
                         </p>
                     </div>
@@ -226,17 +243,31 @@ const SearchResultContentComponent = ({ info, index, onToggle }) => {
                             </i>
                             <span>일일조회수 : </span>
                         </p>
-                        <p>{Math.abs(Math.round(dailyViewChange / 10000))}만</p>
+                        <p>
+                            {Math.abs(
+                                Math.round(
+                                    channel_statistics.diff_view_count / 10000,
+                                ),
+                            )}
+                            만
+                        </p>
                         <p>
                             <i>
-                                {Math.round(dailyViewChange / 10000) > 0 ? (
+                                {Math.round(
+                                    channel_statistics.diff_view_count / 10000,
+                                ) > 0 ? (
                                     <FaLongArrowAltUp />
                                 ) : (
                                     <FaLongArrowAltDown />
                                 )}
                             </i>
                             <span>
-                                {Math.abs(Math.round(dailyViewChange / 10000))}{' '}
+                                {Math.abs(
+                                    Math.round(
+                                        channel_statistics.diff_view_count /
+                                            10000,
+                                    ),
+                                )}{' '}
                             </span>
                         </p>
                     </div>
@@ -247,14 +278,21 @@ const SearchResultContentComponent = ({ info, index, onToggle }) => {
                             </i>
                             <span>영상별 평균 조회수 : </span>
                         </p>
-                        <p>{Math.round(averageVideoViewCount / 10000)}만</p>
+                        <p>
+                            {Math.round(
+                                channel_statistics.view_count /
+                                    channel_statistics.video_count /
+                                    10000,
+                            )}
+                            만
+                        </p>
                         <p>&nbsp;</p>
                     </div>
                 </div>
                 <div className="search-channel-present-video-thumbnail-wrap">
                     <div>
-                        <Link to={`/detail/${lastVideo.videoId}`}>
-                            <img src={lastVideo.thumbnails} alt="thumbnail" />
+                        <Link to={`/detail/${videos.id}`}>
+                            <img src={videos.thumbnail} alt="thumbnail" />
                         </Link>
                     </div>
                 </div>

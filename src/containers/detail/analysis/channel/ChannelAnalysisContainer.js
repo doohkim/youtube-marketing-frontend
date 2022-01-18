@@ -8,11 +8,18 @@ const ChannelAnalysisContainerBlock = styled.div`
     height: auto;
 `;
 
-const ChannelAnalysisContainer = () => {
+const ChannelAnalysisContainer = ({ channelDetail, isLoading, Error }) => {
+    if (isLoading) {
+        return <div> 준비중 </div>;
+    }
     return (
         <ChannelAnalysisContainerBlock>
-            <ChannelPerformanceSummaryChart />
-            <ChannelSubscriberChangeChart />
+            {channelDetail && (
+                <ChannelPerformanceSummaryChart channelDetail={channelDetail} />
+            )}
+            {channelDetail && (
+                <ChannelSubscriberChangeChart channelDetail={channelDetail} />
+            )}
         </ChannelAnalysisContainerBlock>
     );
 };
